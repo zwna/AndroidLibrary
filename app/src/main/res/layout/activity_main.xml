@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+   <TextView
+           android:layout_width="0dp"
+           android:layout_height="match_parent"
+           android:text="状态栏高度:"
+           android:layout_weight="1"/>
+
+    <TextView
+            android:id="@+id/text_statusBarHeight"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="ActionBar高度:"
+                android:layout_weight="1"/>
+
+        <TextView
+                android:id="@+id/text_actionBarHeight"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="底部导航栏高度:"
+                android:layout_weight="1"/>
+
+        <TextView
+                android:id="@+id/text_navigationBarHeight"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"/>
+
+    </LinearLayout>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="showToastNormalNoIcon"
+            android:text="弹出自定义Toast(正常没有图标)"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="showToastNormalWithIcon"
+            android:text="弹出自定义Toast(有图标)"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="showToastError"
+            android:text="弹出自定义Toast(错误)"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="showToastCorrect"
+            android:text="弹出自定义Toast(成功)"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="showToastWarning"
+            android:text="弹出自定义Toast(警告)"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="showToastCustom"
+            android:text="弹出自定义Toast(完全自定义)"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="updateApp"
+            android:text="更新APP"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="setNavBarVisibility"
+            android:text="设置底部导航栏(虚拟按键)是否可见"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="startSystemBrowser"
+            android:text="打开系统浏览器"/>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

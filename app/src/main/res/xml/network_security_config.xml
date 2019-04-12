@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">www.pgyer.com</domain>
+        <domain includeSubdomains="true">app-global.pgyer.com</domain>
+    </domain-config>
+    <!--安卓9。0及以上允许使用http请求-->
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>
