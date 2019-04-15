@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
+<androidx.core.widget.NestedScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -61,59 +64,94 @@
 
     </LinearLayout>
 
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="设备是否被root:"
+                android:layout_weight="1"/>
+
+        <TextView
+                android:id="@+id/text_isDeviceRooted"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"/>
+
+    </LinearLayout>
+
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="showToastNormalNoIcon"
+            android:textAllCaps="false"
             android:text="弹出自定义Toast(正常没有图标)"/>
 
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="showToastNormalWithIcon"
+            android:textAllCaps="false"
             android:text="弹出自定义Toast(有图标)"/>
 
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="showToastError"
+            android:textAllCaps="false"
             android:text="弹出自定义Toast(错误)"/>
 
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="showToastCorrect"
+            android:textAllCaps="false"
             android:text="弹出自定义Toast(成功)"/>
 
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="showToastWarning"
+            android:textAllCaps="false"
             android:text="弹出自定义Toast(警告)"/>
 
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="showToastCustom"
+            android:textAllCaps="false"
             android:text="弹出自定义Toast(完全自定义)"/>
 
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="updateApp"
+            android:textAllCaps="false"
             android:text="更新APP"/>
 
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="setNavBarVisibility"
+            android:textAllCaps="false"
             android:text="设置底部导航栏(虚拟按键)是否可见"/>
 
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textAllCaps="false"
             android:onClick="startSystemBrowser"
             android:text="打开系统浏览器"/>
 
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="startSecondActivity"
+            android:textAllCaps="false"
+            android:text="打开SecondActivity"/>
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.core.widget.NestedScrollView>

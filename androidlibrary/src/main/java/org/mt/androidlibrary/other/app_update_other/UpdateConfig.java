@@ -1,4 +1,4 @@
-package org.mt.androidlibrary.appupdate;
+package org.mt.androidlibrary.other.app_update_other;
 
 
 import android.content.Context;
@@ -10,7 +10,7 @@ import androidx.annotation.DrawableRes;
 /**
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
-class UpdateConfig implements Parcelable {
+public class UpdateConfig implements Parcelable {
 
 
     private String mUrl;

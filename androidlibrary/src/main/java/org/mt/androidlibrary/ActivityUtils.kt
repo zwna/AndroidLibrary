@@ -6,6 +6,8 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import kotlin.reflect.KClass
 
 /**
  *@Description:Activity的工具类
@@ -28,7 +30,7 @@ class ActivityUtils private constructor(){
             intent.setClassName(pakName, className)
             val applicationByReflect:Application? = CommonUtils.getApplicationByReflect()
             return if(applicationByReflect != null) {
-                !(applicationByReflect.packageManager.resolveActivity(intent,0) == null || intent.resolveActivity(applicationByReflect.packageManager) == null || applicationByReflect.packageManager.queryIntentActivities(intent,0).size == 0)
+                applicationByReflect.packageManager.resolveActivity(intent,0) == null || intent.resolveActivity(applicationByReflect.packageManager) == null || applicationByReflect.packageManager.queryIntentActivities(intent,0).size == 0
             }else{
                 false
             }
@@ -50,16 +52,16 @@ class ActivityUtils private constructor(){
          * @param context
          * @param kClass 要启动的Activity的Class对象
          */
-        fun startActivity(context: Context,kClass:Class<Activity>){
-            val intent = Intent(context,kClass)
+        fun startActivity(context: Context,kClass:KClass<out Activity>){
+            val intent = Intent(context,kClass.java)
             context.startActivity(intent)
         }
 
         /**
          * 携带bundle数据,启动某个Activity
          */
-        fun startActivity(context: Context,kClass:Class<Activity>,bundle:Bundle){
-            val intent = Intent(context,kClass)
+        fun startActivity(context: Context, kClass: KClass<out Activity>, bundle:Bundle){
+            val intent = Intent(context,kClass.java)
             intent.putExtras(bundle)
             context.startActivity(intent,bundle)
         }

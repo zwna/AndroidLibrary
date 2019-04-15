@@ -1,4 +1,4 @@
-package org.mt.androidlibrary.appupdate
+package org.mt.androidlibrary.app_update
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -13,6 +13,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.palette.graphics.Palette
 import org.mt.androidlibrary.R
 import org.mt.androidlibrary.custom_view.NumberProgressBar
+import org.mt.androidlibrary.other.app_update_other.AppUpdater
+import org.mt.androidlibrary.other.app_update_other.UpdateCallback
 import org.mt.androidlibrary.toast.native_toast.NativeToastUtils
 import java.io.File
 

@@ -1,4 +1,4 @@
-package org.mt.androidlibrary.appupdate;
+package org.mt.androidlibrary.other.app_update_other;
 
 import java.io.File;
 import java.io.Serializable;
@@ -6,7 +6,7 @@ import java.io.Serializable;
 /**
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
-interface IHttpManager {
+public interface IHttpManager {
 
 
     /**

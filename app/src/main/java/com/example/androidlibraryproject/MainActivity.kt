@@ -7,7 +7,8 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import org.mt.androidlibrary.ActivityUtils
 import org.mt.androidlibrary.BarUtils
-import org.mt.androidlibrary.appupdate.AppUpdateUtils
+import org.mt.androidlibrary.DeviceUtils
+import org.mt.androidlibrary.app_update.AppUpdateUtils
 import org.mt.androidlibrary.toast.custom_toast.Toasty
 import org.mt.androidlibrary.toast.native_toast.NativeToastUtils
 
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         text_statusBarHeight.text = "${BarUtils.getStatusBarHeight()}px"
         text_actionBarHeight.text = "${BarUtils.getActionBarHeight()}px"
         text_navigationBarHeight.text = "${BarUtils.getBottomNavigationHeight()}px"
+        text_isDeviceRooted.text = DeviceUtils.isDeviceRooted().toString()
     }
 
 
@@ -64,5 +66,13 @@ class MainActivity : AppCompatActivity() {
 
     fun startSystemBrowser(view:View){
         ActivityUtils.startSystemBrowserActivity(this,"https://blog.csdn.net/lovemark8/article/details/40583953")
+    }
+
+    fun startSecondActivity(view:View){
+        if(ActivityUtils.isActivityExists("com.example.androidlibraryproject","SecondActivity")) {
+            ActivityUtils.startActivity(this, SecondActivity::class)
+        }else{
+            NativeToastUtils.showShortToast("SecondActivity不存在")
+        }
     }
 }

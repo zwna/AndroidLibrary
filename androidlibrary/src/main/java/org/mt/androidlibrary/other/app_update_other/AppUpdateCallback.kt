@@ -1,9 +1,9 @@
-package org.mt.androidlibrary.appupdate
+package org.mt.androidlibrary.other.app_update_other
 
 /**
  * @author Jenly [Jenly](mailto:jenly1314@gmail.com)
  */
-internal abstract class AppUpdateCallback : UpdateCallback {
+abstract class AppUpdateCallback : UpdateCallback {
     override fun onDownloading(isDownloading: Boolean) {
 
     }

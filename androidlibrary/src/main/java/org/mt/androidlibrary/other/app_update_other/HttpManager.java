@@ -1,4 +1,4 @@
-package org.mt.androidlibrary.appupdate;
+package org.mt.androidlibrary.other.app_update_other;
 
 import android.os.AsyncTask;
 
@@ -14,7 +14,7 @@ import javax.net.ssl.HttpsURLConnection;
 /**
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
- class HttpManager implements IHttpManager {
+public class HttpManager implements IHttpManager {
 
     private static final int DEFAULT_TIME_OUT = 20000;
 

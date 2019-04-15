@@ -1,4 +1,4 @@
-package org.mt.androidlibrary.appupdate;
+package org.mt.androidlibrary.other.app_update_other;
 
 import android.app.Notification;
 import android.app.NotificationChannel;

@@ -1,4 +1,4 @@
-package org.mt.androidlibrary.appupdate;
+package org.mt.androidlibrary.other.app_update_other;
 
 import android.Manifest;
 import android.app.Activity;

@@ -1,4 +1,4 @@
-package org.mt.androidlibrary.appupdate;
+package org.mt.androidlibrary.other.app_update_other;
 
 import android.content.Context;
 import androidx.annotation.RawRes;
@@ -24,7 +24,7 @@ import javax.net.ssl.X509TrustManager;
 /**
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
-class SSLSocketFactoryUtils {
+public class SSLSocketFactoryUtils {
 
     private SSLSocketFactoryUtils(){
 

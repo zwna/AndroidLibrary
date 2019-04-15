@@ -1,4 +1,4 @@
-package org.mt.androidlibrary.toast.custom_toast
+package org.mt.androidlibrary.other.toasty
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -31,7 +31,7 @@ import org.mt.androidlibrary.R
  * along with Toasty.  If not, see <http:></http:>//www.gnu.org/licenses/>.
  */
 
-internal object ToastyUtils{
+object ToastyUtils{
 
     internal fun tintIcon(drawable: Drawable, @ColorInt tintColor: Int): Drawable {
         drawable.setColorFilter(tintColor, PorterDuff.Mode.SRC_IN)

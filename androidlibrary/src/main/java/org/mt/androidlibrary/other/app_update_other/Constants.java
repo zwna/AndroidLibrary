@@ -1,4 +1,4 @@
-package org.mt.androidlibrary.appupdate;
+package org.mt.androidlibrary.other.app_update_other;
 
 import android.os.Environment;
 
@@ -7,7 +7,7 @@ import java.io.File;
 /**
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
-final class Constants {
+public final class Constants {
 
     public static final String TAG = "AppUpdater";
 

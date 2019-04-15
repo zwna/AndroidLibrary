@@ -1,4 +1,4 @@
-package org.mt.androidlibrary.appupdate;
+package org.mt.androidlibrary.other.app_update_other;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -10,12 +10,13 @@ import android.text.TextUtils;
 import android.util.Log;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
+import org.mt.androidlibrary.app_update.*;
 
 
 /**
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
-class AppUpdater {
+public class AppUpdater {
     /**
      * {@link #mContext}不强制要求是{@link Activity}，但能传{@link Activity}尽量传。AppUpdater本应该只专注于App更新，尽量不涉及动态权限相关的处理。如果mContext传的是{@link Activity}，则默认会校验一次动态权限。
      */
