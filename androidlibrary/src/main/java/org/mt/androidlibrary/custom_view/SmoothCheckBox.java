@@ -17,7 +17,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Checkable;
-import org.mt.androidlibrary.SizeUtils;
+import com.blankj.utilcode.util.SizeUtils;
 import org.mt.androidlibrary.R;
 
 /**
@@ -78,7 +78,7 @@ public class SmoothCheckBox extends View implements Checkable {
         mFloorColor = ta.getColor(R.styleable.SmoothCheckBox_color_unchecked_stroke, COLOR_FLOOR_UNCHECKED);
         mCheckedColor = ta.getColor(R.styleable.SmoothCheckBox_color_checked, COLOR_CHECKED);
         mUnCheckedColor = ta.getColor(R.styleable.SmoothCheckBox_color_unchecked, COLOR_UNCHECKED);
-        mStrokeWidth = ta.getDimensionPixelSize(R.styleable.SmoothCheckBox_stroke_width, SizeUtils.dp2px(getContext(), 0));
+        mStrokeWidth = ta.getDimensionPixelSize(R.styleable.SmoothCheckBox_stroke_width, SizeUtils.dp2px(0));
         ta.recycle();
 
         mFloorUnCheckedColor = mFloorColor;
@@ -187,7 +187,7 @@ public class SmoothCheckBox extends View implements Checkable {
     }
 
     private int measureSize(int measureSpec) {
-        int defSize = SizeUtils.dp2px(getContext(), DEF_DRAW_SIZE);
+        int defSize = SizeUtils.dp2px(DEF_DRAW_SIZE);
         int specSize = MeasureSpec.getSize(measureSpec);
         int specMode = MeasureSpec.getMode(measureSpec);
 

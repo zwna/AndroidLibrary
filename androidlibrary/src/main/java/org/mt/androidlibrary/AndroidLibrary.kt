@@ -1,12 +1,11 @@
 package org.mt.androidlibrary
 
 import android.app.Application
-import android.content.Context
 import com.tencent.mmkv.MMKV
 
 /**
  *@Description:
- *@Author:liubiao
+ *@Author:zwna
  *@Date:2019/4/15
  */
 class AndroidLibrary {

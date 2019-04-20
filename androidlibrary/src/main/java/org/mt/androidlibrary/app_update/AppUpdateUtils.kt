@@ -11,11 +11,11 @@ import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
 import androidx.palette.graphics.Palette
+import com.blankj.utilcode.util.ToastUtils
 import org.mt.androidlibrary.R
 import org.mt.androidlibrary.custom_view.NumberProgressBar
 import org.mt.androidlibrary.other.app_update_other.AppUpdater
 import org.mt.androidlibrary.other.app_update_other.UpdateCallback
-import org.mt.androidlibrary.toast.native_toast.NativeToastUtils
 import java.io.File
 
 /**
@@ -100,7 +100,7 @@ class AppUpdateUtils private constructor(){
 
                         override fun onDownloading(isDownloading: Boolean) {
                             if (isDownloading) {
-                                NativeToastUtils.showShortToast("已经在下载中,请勿重复下载。")
+                                ToastUtils.showShort("已经在下载中,请勿重复下载。")
                             }
                         }
 

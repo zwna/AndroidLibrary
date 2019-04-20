@@ -1,28 +1,23 @@
 package com.example.androidlibraryproject
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.blankj.utilcode.util.*
 import kotlinx.android.synthetic.main.activity_main.*
-import org.mt.androidlibrary.ActivityUtils
-import org.mt.androidlibrary.BarUtils
-import org.mt.androidlibrary.DeviceUtils
+import org.mt.androidlibrary.SystemActivityUtils
 import org.mt.androidlibrary.app_update.AppUpdateUtils
 import org.mt.androidlibrary.toast.custom_toast.Toasty
-import org.mt.androidlibrary.toast.native_toast.NativeToastUtils
 
+@SuppressLint("SetTextI18n")
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        text_statusBarHeight.text = "${BarUtils.getStatusBarHeight()}px"
-        text_actionBarHeight.text = "${BarUtils.getActionBarHeight()}px"
-        text_navigationBarHeight.text = "${BarUtils.getBottomNavigationHeight()}px"
-        text_isDeviceRooted.text = DeviceUtils.isDeviceRooted().toString()
     }
-
 
     fun showToastNormalNoIcon(view: View){
         Toasty.normal(this@MainActivity,"这是正常的且没有图标的Toast").show()
@@ -54,25 +49,23 @@ class MainActivity : AppCompatActivity() {
 
     fun setNavBarVisibility(view:View){
       if(BarUtils.isNavBarVisible(this@MainActivity)){
-          NativeToastUtils.showShortToast("底部导航栏可见")
+          ToastUtils.showShort("底部导航栏可见")
           BarUtils.setNavBarVisibility(this@MainActivity,false)
-          text_navigationBarHeight.text = "${BarUtils.getBottomNavigationHeight()}px"
       }else{
-          NativeToastUtils.showShortToast("底部导航栏不可见")
+          ToastUtils.showShort("底部导航栏不可见")
           BarUtils.setNavBarVisibility(this@MainActivity,true)
-          text_navigationBarHeight.text = "${BarUtils.getBottomNavigationHeight()}px"
       }
     }
 
     fun startSystemBrowser(view:View){
-        ActivityUtils.startSystemBrowserActivity(this,"https://blog.csdn.net/lovemark8/article/details/40583953")
+        SystemActivityUtils.startSystemBrowserActivity(this,"https://blog.csdn.net/lovemark8/article/details/40583953")
     }
 
     fun startSecondActivity(view:View){
-        if(ActivityUtils.isActivityExists("com.example.androidlibraryproject","SecondActivity")) {
-            ActivityUtils.startActivity(this, SecondActivity::class)
+        if(!ActivityUtils.isActivityExists(AppUtils.getAppPackageName(),"SecondActivity")) {
+            ActivityUtils.startActivity(SecondActivity::class.java)
         }else{
-            NativeToastUtils.showShortToast("SecondActivity不存在")
+            ToastUtils.showShort("SecondActivity不存在")
         }
     }
 }
