@@ -11,6 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="captureAllContent"
+            android:textAllCaps="false"
             android:text="点击截取WebView全部截图(包含未显示部分)"/>
 
     <WebView
