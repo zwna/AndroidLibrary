@@ -3,6 +3,7 @@ package org.mt.androidlibrary
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.webkit.WebView
+import android.webkit.WebViewClient
 
 /**
  *@Description:WebView的工具类
@@ -27,6 +28,8 @@ class WebViewUtils {
 
         /**
          * 截取WebView展示的全部内容(包含未显示部分)
+         * 安卓5.0及以上版本
+         * 使用该方法之前需要调用{WebViewUtils.enableSlowWholeDocumentDraw()}
          * @return 截取成功后的Bitmap图
          */
         fun getAllContentScreenShot(webView: WebView):Bitmap{
@@ -41,15 +44,5 @@ class WebViewUtils {
             return bitmap
         }
 
-        /**
-         * 截取WebView显示的内容
-         */
-         fun getShowContentScreenShot(webView: WebView):Bitmap{
-            val snapShot = webView.capturePicture()
-            val bmp = Bitmap.createBitmap(snapShot.width,snapShot.height, Bitmap.Config.ARGB_8888)
-            val canvas = Canvas(bmp)
-            snapShot.draw(canvas)
-            return bmp
-        }
     }
 }

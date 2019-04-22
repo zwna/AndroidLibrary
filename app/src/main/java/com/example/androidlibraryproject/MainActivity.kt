@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.blankj.utilcode.util.*
-import kotlinx.android.synthetic.main.activity_main.*
 import org.mt.androidlibrary.SystemActivityUtils
 import org.mt.androidlibrary.app_update.AppUpdateUtils
 import org.mt.androidlibrary.toast.custom_toast.Toasty
