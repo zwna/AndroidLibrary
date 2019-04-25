@@ -16,17 +16,34 @@ android {
                 APPLICATION_ID:rootProject.ext.packageName.mainApplicationId,
         ]
 
+        signingConfigs {
+            config {
+                keyAlias 'alien'
+                keyPassword 'ay70um'
+                storeFile file('/Users/mac/Desktop/lb.keystore')
+                storePassword 'ay70um'
+            }
+        }
+
     }
     buildTypes {
+        debug {
+            minifyEnabled true//开启混淆
+            zipAlignEnabled true//Zipalign优化
+            signingConfig signingConfigs.config
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled true//开启混淆
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            zipAlignEnabled true//Zipalign优化
+            signingConfig signingConfigs.config
         }
     }
     buildToolsVersion '28.0.3'
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
     }
 
 }
@@ -34,7 +51,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:28.0.0'
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13-beta-2'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -42,6 +59,7 @@ dependencies {
     api 'com.android.support:palette-v7:28.0.0'
     api 'com.tencent:mmkv:1.0.18'
     api 'com.blankj:utilcodex:1.23.7'
+    api 'com.squareup.retrofit2:retrofit:2.5.0'
 }
 repositories {
     mavenCentral()

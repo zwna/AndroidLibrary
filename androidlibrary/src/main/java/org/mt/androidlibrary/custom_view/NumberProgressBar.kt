@@ -40,7 +40,7 @@ class NumberProgressBar @JvmOverloads constructor(
      */
     var progress = 0
         set(progress) {
-            if (progress <= max && progress >= 0) {
+            if (progress in 0..max) {
                 field = progress
                 invalidate()
             }

@@ -11,6 +11,8 @@ import android.view.View
 import android.webkit.WebViewClient
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
+import com.blankj.utilcode.util.ActivityUtils
 import kotlinx.android.synthetic.main.activity_second.*
 import org.mt.androidlibrary.WebViewUtils
 import java.io.File
@@ -26,11 +28,23 @@ class SecondActivity : AppCompatActivity() {
         setContentView(R.layout.activity_second)
         webView.loadUrl("http://www.baidu.com")
         webView.webViewClient = WebViewClient()
+
+        numberProgressBar.max = 100
+        numberProgressBar.progress = 40
+        numberProgressBar.progressTextSize = 18f
+        numberProgressBar.prefix = "%"
+        numberProgressBar.suffix = "进度"
+        numberProgressBar.reachedBarColor = ContextCompat.getColor(this,R.color.colorAccent)
+        numberProgressBar.unreachedBarColor = ContextCompat.getColor(this,android.R.color.holo_green_light)
     }
 
 
     fun captureAllContent(view: View){
         saveBitmap(WebViewUtils.getAllContentScreenShot(webView))
+    }
+
+    fun startThirdActivity(view:View){
+        ActivityUtils.startActivity(ThirdActivity::class.java)
     }
 
 
@@ -54,7 +68,7 @@ class SecondActivity : AppCompatActivity() {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
             fos.flush()
             fos.close()
-        } catch (e: FileNotFoundException) {
+        } catch (e: Throwable) {
             e.printStackTrace()
         } catch (e: IOException) {
             e.printStackTrace()

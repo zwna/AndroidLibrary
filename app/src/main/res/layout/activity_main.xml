@@ -67,11 +67,25 @@
             android:text="设置底部导航栏(虚拟按键)是否可见"/>
 
     <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:onClick="startSystemBrowser"
+        android:text="打开系统浏览器"/>
+
+    <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAllCaps="false"
-            android:onClick="startSystemBrowser"
-            android:text="打开系统浏览器"/>
+            android:onClick="startApplicationDetail"
+            android:text="打开应用详情界面"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:onClick="startSetting"
+            android:text="打开设置界面"/>
 
     <Button
             android:layout_width="match_parent"

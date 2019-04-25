@@ -57,7 +57,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun startSystemBrowser(view:View){
-        SystemActivityUtils.startSystemBrowserActivity(this,"https://blog.csdn.net/lovemark8/article/details/40583953")
+        SystemActivityUtils.startSystemBrowserActivity("https://blog.csdn.net/lovemark8/article/details/40583953")
+    }
+
+    fun startApplicationDetail(view:View){
+        SystemActivityUtils.startApplicationDetailActivity()
+    }
+
+    fun startSetting(view:View){
+        SystemActivityUtils.startSettingActivity()
     }
 
     fun startSecondActivity(view:View){

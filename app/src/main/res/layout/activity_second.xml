@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.appcompat.widget.LinearLayoutCompat
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         tools:context=".SecondActivity">
+
+    <org.mt.androidlibrary.custom_view.SmoothCheckBox
+            android:id="@+id/smoothCheckBox"
+            android:layout_gravity="center_vertical"
+            app:stroke_width="2dp"
+            app:color_tick="@android:color/holo_blue_bright"
+            app:duration="2000"
+            app:color_checked="@color/colorPrimary"
+            app:color_unchecked="@android:color/holo_red_dark"
+            app:color_unchecked_stroke="@android:color/holo_green_light"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+
+    <org.mt.androidlibrary.custom_view.NumberProgressBar
+            android:id="@+id/numberProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
 
     <Button
             android:layout_width="match_parent"
@@ -14,10 +32,17 @@
             android:textAllCaps="false"
             android:text="点击截取WebView全部截图(包含未显示部分)"/>
 
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="startThirdActivity"
+            android:textAllCaps="false"
+            android:text="跳转到ThirdActivity"/>
+
     <WebView
             android:id="@+id/webView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"/>
 
-</LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

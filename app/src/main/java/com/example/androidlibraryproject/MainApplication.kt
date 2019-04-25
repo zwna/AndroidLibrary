@@ -1,6 +1,7 @@
 package com.example.androidlibraryproject
 
 import android.app.Application
+import org.mt.androidlibrary.AndroidLibrary
 
 /**
  *@Description:
@@ -12,5 +13,6 @@ class MainApplication:Application() {
 
     override fun onCreate() {
         super.onCreate()
+        AndroidLibrary.init(this,null)
     }
 }
