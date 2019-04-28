@@ -6,4 +6,5 @@
     <color name="successColor">#388E3C</color>
     <color name="warningColor">#FFA900</color>
     <color name="normalColor">#B335383D</color>
+    <color name="fill_color">#dfdbdb</color>
 </resources>

@@ -17,5 +17,12 @@
             android:onClick="getDataByMMKV"
             android:text="使用MMKV取出数据"/>
 
+    <org.mt.androidlibrary.custom_view.CircleImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/jingse"
+            android:text="圆形头像"/>
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -56,6 +56,20 @@ class MainActivity : AppCompatActivity() {
       }
     }
 
+    fun startCall(view:View){
+        if(PermissionUtils.isGranted(android.Manifest.permission.CALL_PHONE)) {
+            SystemActivityUtils.startCallActivity("17660160209")
+        }
+    }
+
+    fun startDial(view:View){
+        SystemActivityUtils.startDialActivity()
+    }
+
+    fun startDialWithPhoneNumber(view: View){
+        SystemActivityUtils.startDialActivityWithPhoneNumber("17660160209")
+    }
+
     fun startSystemBrowser(view:View){
         SystemActivityUtils.startSystemBrowserActivity("https://blog.csdn.net/lovemark8/article/details/40583953")
     }
@@ -68,6 +82,18 @@ class MainActivity : AppCompatActivity() {
         SystemActivityUtils.startSettingActivity()
     }
 
+    fun sendSms(view:View){
+        SystemActivityUtils.startSmsActivity("17660160209","要发送的短信内容")
+    }
+
+    fun startSms(view:View){
+        SystemActivityUtils.startSmsActivity("短信内容")
+    }
+
+    fun sendEmail(view:View){
+        SystemActivityUtils.startSendEmailActivity("3123848646@qq.com")
+    }
+
     fun startSecondActivity(view:View){
         if(!ActivityUtils.isActivityExists(AppUtils.getAppPackageName(),"SecondActivity")) {
             ActivityUtils.startActivity(SecondActivity::class.java)
@@ -75,4 +101,6 @@ class MainActivity : AppCompatActivity() {
             ToastUtils.showShort("SecondActivity不存在")
         }
     }
+
+
 }

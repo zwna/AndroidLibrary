@@ -13,13 +13,30 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+        signingConfigs {
+            config {
+                keyAlias 'alien'
+                keyPassword 'ay70um'
+                storeFile file('/Users/mac/Desktop/lb.jks')
+                storePassword 'ay70um'
+            }
         }
     }
+        buildTypes {
+            debug {
+                minifyEnabled true//开启混淆
+                zipAlignEnabled true//Zipalign优化
+                signingConfig signingConfigs.config
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            }
+            release {
+                minifyEnabled true//开启混淆
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+                zipAlignEnabled true//Zipalign优化
+                signingConfig signingConfigs.config
+            }
+        }
     buildToolsVersion '28.0.3'
     compileOptions {
         sourceCompatibility = '1.8'

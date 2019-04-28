@@ -10,7 +10,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         manifestPlaceholders = [
                 APPLICATION_ID:rootProject.ext.packageName.mainApplicationId,
@@ -20,7 +20,7 @@ android {
             config {
                 keyAlias 'alien'
                 keyPassword 'ay70um'
-                storeFile file('/Users/mac/Desktop/lb.keystore')
+                storeFile file('/Users/mac/Desktop/lb.jks')
                 storePassword 'ay70um'
             }
         }
@@ -60,6 +60,7 @@ dependencies {
     api 'com.tencent:mmkv:1.0.18'
     api 'com.blankj:utilcodex:1.23.7'
     api 'com.squareup.retrofit2:retrofit:2.5.0'
+    api 'com.github.hackware1993:MagicIndicator:1.5.0'
 }
 repositories {
     mavenCentral()

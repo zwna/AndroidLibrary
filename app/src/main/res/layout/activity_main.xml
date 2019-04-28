@@ -90,6 +90,48 @@
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:onClick="startCall"
+            android:text="直接拨打电话"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:onClick="startDial"
+            android:text="跳转到拨号界面"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:onClick="startDialWithPhoneNumber"
+            android:text="跳转到拨号界面并携带电话号码"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:onClick="startSms"
+            android:text="跳转到发短信界面"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:onClick="sendSms"
+            android:text="发送短信"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:onClick="sendEmail"
+            android:text="发送email"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="startSecondActivity"
             android:textAllCaps="false"
             android:text="打开SecondActivity"/>

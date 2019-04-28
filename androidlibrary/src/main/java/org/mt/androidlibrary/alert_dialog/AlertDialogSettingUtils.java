@@ -146,20 +146,7 @@ public class AlertDialogSettingUtils {
      * @param heightPercent 高度占屏幕高度的百分比
      */
     public static void setAndroidxAlertDialogWidthAndHeight(androidx.appcompat.app.AlertDialog alertDialog, float widthPercent, float heightPercent){
-
-        Window window = alertDialog.getWindow();
-        WindowManager windowManager =  window.getWindowManager();
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-
-        windowManager.getDefaultDisplay().getMetrics(displayMetrics);
-        WindowManager.LayoutParams windowAttributes = window.getAttributes();
-        windowAttributes.width = (int) (displayMetrics.widthPixels * widthPercent);
-        windowAttributes.height = (int) (displayMetrics.heightPixels * heightPercent);
-
-        window.setAttributes(windowAttributes);
-        window.setGravity(Gravity.CENTER);
-
-        alertDialog.onWindowAttributesChanged(windowAttributes);
+       setAndroidxAlertDialogWidthAndHeight(alertDialog,widthPercent,heightPercent,Gravity.CENTER);
     }
 
 

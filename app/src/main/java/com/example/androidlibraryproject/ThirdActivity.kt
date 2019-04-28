@@ -20,4 +20,8 @@ class ThirdActivity : AppCompatActivity() {
     fun getDataByMMKV(v:View){
         ToastUtils.showShort(MMKVUtils.getMMKVBySingleThreaded().decodeString("key"))
     }
+
+    fun circleImageView(view:View){
+
+    }
 }
