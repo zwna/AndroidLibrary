@@ -10,11 +10,13 @@
     <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="saveDataByMMKV"
+            android:textAllCaps="false"
             android:text="使用MMKV保存数据"/>
 
     <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="getDataByMMKV"
+            android:textAllCaps="false"
             android:text="使用MMKV取出数据"/>
 
     <org.mt.androidlibrary.custom_view.CircleImageView
@@ -23,6 +25,12 @@
             android:scaleType="fitXY"
             android:src="@mipmap/jingse"
             android:text="圆形头像"/>
+
+    <Button android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:onClick="getDataByRetrofit"
+            android:text="网络请求"/>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

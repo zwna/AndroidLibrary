@@ -1,16 +1,10 @@
 package org.mt.androidlibrary
 
-import android.R.attr.*
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.provider.Contacts
-import android.provider.Settings
 import android.provider.Settings.ACTION_SETTINGS
 import com.blankj.utilcode.util.ActivityUtils
 import com.blankj.utilcode.util.AppUtils
-import android.provider.Contacts.People
 
 
 
