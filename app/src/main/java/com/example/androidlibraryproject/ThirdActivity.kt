@@ -1,13 +1,10 @@
 package com.example.androidlibraryproject
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.ArrayMap
 import android.view.View
-import android.widget.Toast
 import com.blankj.utilcode.util.ToastUtils
-import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -15,7 +12,6 @@ import io.reactivex.schedulers.Schedulers
 import org.mt.androidlibrary.MMKVUtils
 import org.mt.androidlibrary.net.RetrofitFactory
 import org.mt.androidlibrary.net.config.ApiConfig
-import org.mt.androidlibrary.toast.custom_toast.Toasty
 import io.reactivex.functions.Consumer as Consumer
 
 class ThirdActivity : AppCompatActivity() {
@@ -47,9 +43,10 @@ class ThirdActivity : AppCompatActivity() {
            .setConnectTimeout(5000)
            .setReadTimeout(5000)
            .setWriteTimeout(5000)
+           .setMaxRetry(4)
            .setHeads(commonHeaders)
            .setComnParams(commonParam)
-            .setOpenHttps(true)
+           .setOpenHttps(true)
            .build()
         param.putAll(commonParam as HashMap<String,String>)
         param["api_name"] = "jpt.MarketWallet.withdraw"

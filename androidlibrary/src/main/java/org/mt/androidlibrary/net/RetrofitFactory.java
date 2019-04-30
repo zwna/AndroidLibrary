@@ -37,7 +37,7 @@ public class RetrofitFactory {
                 .connectTimeout(apiConfig.getConnectTimeout(), TimeUnit.MILLISECONDS)
                 .writeTimeout(apiConfig.getWriteTimeout(),TimeUnit.MILLISECONDS)
                 .addInterceptor(new HeaderInterceptor(apiConfig))
-                .addInterceptor(new RetryInterceptor(5))
+                .addInterceptor(new RetryInterceptor(apiConfig.getMaxRetry()))
                 .addInterceptor(new ParameterInterceptor(apiConfig.getComnParams()));
 
         //信任https证书
@@ -57,9 +57,7 @@ public class RetrofitFactory {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create());
 
         //默认使用配置的mBaseUrl
-        if (!TextUtils.isEmpty(apiConfig.getBaseUrl())){
-            mRetrofit = mBuilder.baseUrl(apiConfig.getBaseUrl()).build();
-        }
+        mRetrofit = mBuilder.baseUrl(apiConfig.getBaseUrl()).build();
     }
 
     /**

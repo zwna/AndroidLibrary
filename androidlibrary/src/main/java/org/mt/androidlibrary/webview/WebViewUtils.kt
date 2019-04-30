@@ -1,4 +1,4 @@
-package org.mt.androidlibrary
+package org.mt.androidlibrary.webview
 
 import android.graphics.Bitmap
 import android.graphics.Canvas

@@ -9,12 +9,10 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.view.View
 import android.webkit.WebViewClient
-import android.widget.ImageView
-import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import com.blankj.utilcode.util.ActivityUtils
 import kotlinx.android.synthetic.main.activity_second.*
-import org.mt.androidlibrary.WebViewUtils
+import org.mt.androidlibrary.webview.WebViewUtils
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream

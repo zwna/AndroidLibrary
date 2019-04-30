@@ -11,11 +11,19 @@ import java.util.HashMap;
  * @Date:2019-04-29
  */
 public class ApiConfig implements Serializable {
-    private static String mBaseUrl;
-    private static int mWriteTimeout;
-    private static int mReadTimeout;
-    private static int mConnectTimeout;
+    //retrofit的baseUrl
+    private String mBaseUrl;
+    //写入超时
+    private int mWriteTimeout;
+    //读取超时
+    private int mReadTimeout;
+    //连接超时
+    private int mConnectTimeout;
+    //当网络请求失败的时候的重新连接的次数
+    private int mMaxRetry = 5;
+    //公共头参数
     private static ArrayMap<String, String> mHeads;
+    //公共参数
     private static HashMap<String, Object> mCommonParams = new HashMap<>();
     //是否信任https证书 true:信任https证书 false:不信任https证书
     private static boolean mOpenHttps;
@@ -25,6 +33,7 @@ public class ApiConfig implements Serializable {
         mWriteTimeout = builder.writeTimeout;
         mReadTimeout = builder.readTimeout;
         mConnectTimeout = builder.connectTimeout;
+        mMaxRetry = builder.maxRetry;
         mHeads = builder.heads;
         mCommonParams = builder.comnParams;
         mOpenHttps = builder.openHttps;
@@ -33,6 +42,10 @@ public class ApiConfig implements Serializable {
         if (null == mCommonParams){
             mCommonParams = new HashMap<>();
         }
+    }
+
+    public int getMaxRetry() {
+        return mMaxRetry;
     }
 
     public String getBaseUrl() {
@@ -76,12 +89,18 @@ public class ApiConfig implements Serializable {
         private int writeTimeout;
         private int readTimeout;
         private int connectTimeout;
+        private int maxRetry;
         private ArrayMap<String, String> heads;
         private HashMap<String, Object> comnParams;
         private boolean openHttps;
 
         public Builder setBaseUrl(String baseUrl) {
             this.baseUrl = baseUrl;
+            return this;
+        }
+
+        public Builder setMaxRetry(int maxRetry) {
+            this.maxRetry = maxRetry;
             return this;
         }
 
