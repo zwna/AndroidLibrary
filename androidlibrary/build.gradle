@@ -28,13 +28,13 @@ android {
     }
     buildTypes {
         debug {
-            minifyEnabled true//开启混淆
+            minifyEnabled false//开启混淆
             zipAlignEnabled true//Zipalign优化
             signingConfig signingConfigs.config
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         release {
-            minifyEnabled true//开启混淆
+            minifyEnabled false//开启混淆
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             zipAlignEnabled true//Zipalign优化
             signingConfig signingConfigs.config
