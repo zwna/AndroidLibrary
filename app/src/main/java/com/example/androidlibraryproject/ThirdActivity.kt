@@ -2,6 +2,7 @@ package com.example.androidlibraryproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.util.ArrayMap
 import android.view.View
 import com.blankj.utilcode.util.ToastUtils
@@ -9,9 +10,12 @@ import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.activity_third.*
+import org.mt.androidlibrary.AssetsManageUtils
 import org.mt.androidlibrary.MMKVUtils
 import org.mt.androidlibrary.net.RetrofitFactory
 import org.mt.androidlibrary.net.config.ApiConfig
+import java.util.concurrent.Executors
 import io.reactivex.functions.Consumer as Consumer
 
 class ThirdActivity : AppCompatActivity() {
@@ -21,6 +25,12 @@ class ThirdActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_third)
+        Executors.newFixedThreadPool(5).execute{
+            val json = AssetsManageUtils.getAssetsJson("area.json",this)
+            runOnUiThread {
+                text_assetsJsonContent.text = Editable.Factory.getInstance().newEditable(json)
+            }
+        }
     }
 
     fun saveDataByMMKV(v:View){

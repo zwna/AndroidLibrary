@@ -12,10 +12,10 @@ import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
 import androidx.palette.graphics.Palette
 import com.blankj.utilcode.util.ToastUtils
+import com.king.app.updater.AppUpdater
+import com.king.app.updater.callback.UpdateCallback
 import org.mt.androidlibrary.R
 import org.mt.androidlibrary.custom_view.NumberProgressBar
-import org.mt.androidlibrary.other.app_update_other.AppUpdater
-import org.mt.androidlibrary.other.app_update_other.UpdateCallback
 import java.io.File
 
 /**
