@@ -1,9 +1,9 @@
 package org.mt.androidlibrary.net.interceptor;
 
+import android.util.ArrayMap;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
-import org.mt.androidlibrary.net.config.ApiConfig;
 
 import java.io.IOException;
 import java.util.Map;
@@ -15,27 +15,23 @@ import java.util.Map;
  */
 public class HeaderInterceptor implements Interceptor {
 
-    private ApiConfig apiConfig;
+    private ArrayMap<String,String> commonHeaders;
 
-    public HeaderInterceptor(ApiConfig apiConfig) {
-        this.apiConfig = apiConfig;
+    public HeaderInterceptor(ArrayMap<String,String> commonHeaders) {
+        this.commonHeaders = commonHeaders;
     }
 
     @Override
     public Response intercept(Chain chain) throws IOException {
-        Request request = chain.request();
-        Request.Builder reqBuilder = request.newBuilder();
-//        reqBuilder.header("Content-type","application/json")
-//                .header("Authorization","author")
-//                .addHeader("Accept-Encoding", "identity");
-
+        Request original = chain.request();
+        Request.Builder requestBuilder = original.newBuilder()
+                .method(original.method(), original.body());
         //动态添加heads
-        Map<String, String> heads = apiConfig.getHeads();
-        if (null != heads) {
-            for (Map.Entry<String, String> entry : heads.entrySet()) {
-                reqBuilder.addHeader(entry.getKey(), entry.getValue());
+        if (null != commonHeaders) {
+            for (Map.Entry<String, String> entry : commonHeaders.entrySet()) {
+                requestBuilder.addHeader(entry.getKey(), entry.getValue());
             }
         }
-        return chain.proceed(reqBuilder.build());
+        return chain.proceed(requestBuilder.build());
     }
 }

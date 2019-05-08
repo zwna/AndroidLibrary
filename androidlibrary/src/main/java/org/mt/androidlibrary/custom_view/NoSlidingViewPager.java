@@ -10,15 +10,15 @@ import androidx.viewpager.widget.ViewPager;
  * @Author:zwna
  * @Date:2019-04-25
  */
-public class NoScrollViewPager extends ViewPager {
+public class NoSlidingViewPager extends ViewPager {
 
     private boolean noScroll = false;
 
-    public NoScrollViewPager(Context context, AttributeSet attrs) {
+    public NoSlidingViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public NoScrollViewPager(Context context) {
+    public NoSlidingViewPager(Context context) {
         super(context);
     }
 

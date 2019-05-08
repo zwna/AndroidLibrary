@@ -36,7 +36,7 @@ public class RetrofitFactory {
                 .readTimeout(apiConfig.getReadTimeout(), TimeUnit.MILLISECONDS)
                 .connectTimeout(apiConfig.getConnectTimeout(), TimeUnit.MILLISECONDS)
                 .writeTimeout(apiConfig.getWriteTimeout(),TimeUnit.MILLISECONDS)
-                .addInterceptor(new HeaderInterceptor(apiConfig))
+                .addInterceptor(new HeaderInterceptor(apiConfig.getHeads()))
                 .addInterceptor(new RetryInterceptor(apiConfig.getMaxRetry()))
                 .addInterceptor(new ParameterInterceptor(apiConfig.getComnParams()));
 

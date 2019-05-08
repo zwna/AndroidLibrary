@@ -22,49 +22,62 @@ public  class ParameterInterceptor implements Interceptor {
 
     @Override
     public Response intercept(Chain chain) throws IOException {
-        Request request = chain.request();
+        //获取原来的request
+        Request oldRequest = chain.request();
+        //获取url
+        String url = oldRequest.url().toString();
+        //判断请求 get还是post
+        if (oldRequest.method().equalsIgnoreCase("GET")) {
+            //非空判断
+            if (params != null && params.size() > 0) {
+                StringBuilder builder = new StringBuilder(url);
 
-        if (params != null && params.size() != 0) {
-            if (request.method().equals("GET")) {// 为GET方式统一添加请求参数
-                HttpUrl.Builder modifiedUrl = request.url().newBuilder()
-                        .scheme(request.url().scheme())
-                        .host(request.url().host());
-
-                if (params.size() != 0) {
-                    for (Map.Entry<String, Object> entry : params.entrySet()) {
-                        modifiedUrl.addQueryParameter(entry.getKey(), entry.getValue().toString());
-                    }
+                //拼接公共请求参数
+                for (Map.Entry<String, Object> entry : params.entrySet()) {
+                    builder.append("&" + entry.getKey() + "=" + entry.getValue());
                 }
 
-                request = request.newBuilder()
-                        .method(request.method(), request.body())
-                        .url(modifiedUrl.build())
+                String surl = builder.toString();
+                //判断地址有没有？没有则添加
+                if (!surl.contains("?")) {
+                    surl = surl.replaceFirst("&", "?");
+                }
+                //根据老的生成新的
+                Request request = oldRequest.newBuilder()
+                        .url(surl)
                         .build();
-
-            } else if (request.method().equals("POST")) {// 为POST方式统一添加请求参数
-                if (request.body() instanceof FormBody) {
-                    FormBody.Builder body = new FormBody.Builder();
-                    if (params.size() != 0) {
-                        for (Map.Entry<String, Object> entry : params.entrySet()) {
-                            body.addEncoded(entry.getKey(), entry.getValue().toString());
+                return chain.proceed(request);
+            }
+        } else {
+            if (params != null && params.size() > 0) {
+                RequestBody body = oldRequest.body();
+                if (body != null && body instanceof FormBody) {
+                    FormBody formBody = (FormBody) body;
+                    //把原来的body添加到新body里
+                    FormBody.Builder sbuilder = new FormBody.Builder();
+                    //为了防止添加重复的key 和 value
+                    HashMap<String, String> hashMap = new HashMap<>();
+                    for (int i=0;i<formBody.size();i++){
+                        sbuilder.add(formBody.encodedName(i),formBody.encodedValue(i));
+                        hashMap.put(formBody.encodedName(i),formBody.encodedValue(i));
+                    }
+                    //把公共参数添加到新的body中
+                    for (Map.Entry<String,Object> entry: params.entrySet()){
+                        if (!hashMap.containsKey(entry.getKey())){
+                            sbuilder.add(entry.getKey(),(String) entry.getValue());
                         }
                     }
-                    body.build();
-
-                    FormBody oldBody = (FormBody) request.body();
-                    if (oldBody != null && oldBody.size() != 0) {
-                        for (int i = 0; i < oldBody.size(); i++) {
-                            body.addEncoded(oldBody.encodedName(i), oldBody.encodedValue(i));
-                        }
-                    }
-
-                    request = request.newBuilder()
-                            .post(body.build())
+                    FormBody sformBody = sbuilder.build();
+                    //根据老的生成新的
+                    Request request = oldRequest.newBuilder()
+                            .post(sformBody)
                             .build();
+                    return chain.proceed(request);
                 }
             }
         }
-        return chain.proceed(request);
+
+        return chain.proceed(oldRequest);
     }
 
 }
