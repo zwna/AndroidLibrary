@@ -1,7 +1,7 @@
 # AndroidLibrary
 
-使用方法：
-    1.在项目的根目录下的build.gradle的添加
+#使用方法：
+    1.在项目的根目录下的build.gradle的添加\n
     allprojects {
     		repositories {
     			...
