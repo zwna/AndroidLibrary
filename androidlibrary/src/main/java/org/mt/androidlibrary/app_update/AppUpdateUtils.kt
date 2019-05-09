@@ -35,7 +35,7 @@ class AppUpdateUtils private constructor(){
 
         //设置更新APP对话框的顶部图片
         fun setBitmapTop(bitmap: Bitmap) {
-            AppUpdateUtils.bitmapTop = bitmap
+            bitmapTop = bitmap
         }
 
         /**

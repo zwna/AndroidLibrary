@@ -89,7 +89,7 @@ public class ApiConfig implements Serializable {
         private int writeTimeout;
         private int readTimeout;
         private int connectTimeout;
-        private int maxRetry;
+        private int maxRetry = 2;
         private ArrayMap<String, String> heads;
         private HashMap<String, Object> comnParams;
         private boolean openHttps;

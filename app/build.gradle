@@ -23,20 +23,20 @@ android {
             }
         }
     }
-        buildTypes {
-            debug {
-                minifyEnabled false//开启混淆
-                zipAlignEnabled true//Zipalign优化
-                signingConfig signingConfigs.config
-                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            }
-            release {
-                minifyEnabled false//开启混淆
-                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-                zipAlignEnabled true//Zipalign优化
-                signingConfig signingConfigs.config
-            }
+    buildTypes {
+        debug {
+            minifyEnabled false//开启混淆
+            zipAlignEnabled true//Zipalign优化
+            signingConfig signingConfigs.config
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        release {
+            minifyEnabled false//开启混淆
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            zipAlignEnabled true//Zipalign优化
+            signingConfig signingConfigs.config
+        }
+    }
     buildToolsVersion '28.0.3'
     compileOptions {
         sourceCompatibility = '1.8'

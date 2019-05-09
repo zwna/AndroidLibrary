@@ -8,9 +8,9 @@ import org.mt.androidlibrary.BuildConfig;
 import org.mt.androidlibrary.net.config.ApiConfig;
 import org.mt.androidlibrary.net.https.SslSocketFactory;
 import org.mt.androidlibrary.net.https.UnSafeTrustManager;
+import org.mt.androidlibrary.net.interceptor.CommonParamInterceptor;
 import org.mt.androidlibrary.net.interceptor.HeaderInterceptor;
 import org.mt.androidlibrary.net.interceptor.JsonInterceptor;
-import org.mt.androidlibrary.net.interceptor.ParameterInterceptor;
 import org.mt.androidlibrary.net.interceptor.RetryInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -30,15 +30,15 @@ public class RetrofitFactory {
     private static RetrofitFactory mInstance;
 
     private RetrofitFactory(ApiConfig apiConfig){
-
         //初始化
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder()
                 .readTimeout(apiConfig.getReadTimeout(), TimeUnit.MILLISECONDS)
                 .connectTimeout(apiConfig.getConnectTimeout(), TimeUnit.MILLISECONDS)
                 .writeTimeout(apiConfig.getWriteTimeout(),TimeUnit.MILLISECONDS)
+                .retryOnConnectionFailure(true)
                 .addInterceptor(new HeaderInterceptor(apiConfig.getHeads()))
-                .addInterceptor(new RetryInterceptor(apiConfig.getMaxRetry()))
-                .addInterceptor(new ParameterInterceptor(apiConfig.getComnParams()));
+                .addInterceptor(new CommonParamInterceptor(apiConfig.getComnParams()))
+                .addInterceptor(new RetryInterceptor(apiConfig.getMaxRetry()));
 
         //信任https证书
         if (apiConfig.getOpenHttps()){

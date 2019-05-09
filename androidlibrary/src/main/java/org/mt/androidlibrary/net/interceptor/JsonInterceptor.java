@@ -1,6 +1,7 @@
 package org.mt.androidlibrary.net.interceptor;
 
 import android.util.Log;
+import com.blankj.utilcode.util.LogUtils;
 import com.google.gson.Gson;
 import okhttp3.*;
 import okio.Buffer;
@@ -39,7 +40,7 @@ public class JsonInterceptor implements Interceptor {
             body = buffer.readString(charset);
         }
 
-        Log.d("OkHttp", "请求\nurl：" + request.url() + "\nbody:" + body);
+        LogUtils.d("OkHttp", "请求头:\n" + request.headers() + "\nurl：" + request.url() + "\nbody:" + body);
 
         long startNs = System.nanoTime();
         Response response = chain.proceed(request);
@@ -65,7 +66,7 @@ public class JsonInterceptor implements Interceptor {
             rBody = buffer.clone().readString(charset);
         }
 
-        Log.d("OkHttp", "响应：" + new Gson().toJson(rBody).replace("\\", ""));
+        LogUtils.d("OkHttp", "响应：" + new Gson().toJson(rBody).replace("\\", ""));
 
         return response;
     }

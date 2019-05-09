@@ -31,6 +31,13 @@
             android:onClick="getDataByRetrofit"
             android:text="网络请求"/>
 
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="startFour"
+            android:textAllCaps="false"
+            android:text="跳转到FourActivity"/>
+
     <EditText
             android:id="@+id/text_assetsJsonContent"
             android:layout_width="match_parent"

@@ -4,7 +4,7 @@ import androidx.collection.SimpleArrayMap;
 
 /**
  * @Description:拼音相关的工具类
- * @Author:liubiao
+ * @Author:zwna
  * @Date:2019-04-22
  */
 public class PinyinUtils {

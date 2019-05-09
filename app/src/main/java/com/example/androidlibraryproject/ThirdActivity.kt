@@ -5,16 +5,19 @@ import android.os.Bundle
 import android.text.Editable
 import android.util.ArrayMap
 import android.view.View
+import com.blankj.utilcode.util.ActivityUtils
+import com.blankj.utilcode.util.AppUtils
+import com.blankj.utilcode.util.SpanUtils
 import com.blankj.utilcode.util.ToastUtils
-import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_third.*
 import org.mt.androidlibrary.AssetsManageUtils
 import org.mt.androidlibrary.MMKVUtils
 import org.mt.androidlibrary.net.RetrofitFactory
 import org.mt.androidlibrary.net.config.ApiConfig
+import org.mt.androidlibrary.rxjava.callback.RxJavaCallBack
+import org.mt.androidlibrary.toast.custom_toast.Toasty
 import java.util.concurrent.Executors
 import io.reactivex.functions.Consumer as Consumer
 
@@ -28,7 +31,10 @@ class ThirdActivity : AppCompatActivity() {
         Executors.newFixedThreadPool(5).execute{
             val json = AssetsManageUtils.getAssetsJson("area.json",this)
             runOnUiThread {
-                text_assetsJsonContent.text = Editable.Factory.getInstance().newEditable(json)
+                  SpanUtils.with(text_assetsJsonContent).append(json).setBoldItalic()
+                      .setUnderline()
+                      .setStrikethrough()
+                      .create()
             }
         }
     }
@@ -41,12 +47,17 @@ class ThirdActivity : AppCompatActivity() {
         ToastUtils.showShort(MMKVUtils.getMMKVBySingleThreaded().decodeString("key"))
     }
 
+    fun startFour(v:View){
+        ActivityUtils.startActivity(FourActivity::class.java)
+    }
+
     fun getDataByRetrofit(view:View){
        val commonHeaders =  ArrayMap<String,String>()
         commonHeaders["source"] = "jptcashier"
+        commonHeaders["appversion"] = "cashier_" + AppUtils.getAppVersionCode(AppUtils.getAppPackageName())
        val commonParam = HashMap<String,Any>()
         commonParam["appid"] = "1"
-        commonParam["PHPSESSID"] = "34u9kb9erk67sclh9a6efntru4"
+        commonParam["PHPSESSID"] = "1111111111"
         commonParam["token"] = "11111111111111111111111111111111"
         val apiConfig = ApiConfig.Builder()
            .setBaseUrl("http://jianpeitong.118.easysoft168.com/")
@@ -58,7 +69,6 @@ class ThirdActivity : AppCompatActivity() {
            .setComnParams(commonParam)
            .setOpenHttps(true)
            .build()
-        param.putAll(commonParam as HashMap<String,String>)
         param["api_name"] = "jpt.MarketWallet.withdraw"
         param["bank_card_id"] = "11"
         param["money"] = "10"
@@ -66,20 +76,20 @@ class ThirdActivity : AppCompatActivity() {
         RetrofitFactory.getInstance(apiConfig).create(Api::class.java).withdraw(param)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
-            .subscribe(object: Observer<WithdrawBean>{
-                override fun onComplete() {
-
+            .subscribe(object: RxJavaCallBack<WithdrawBean>(){
+                override fun onNextResponse(t: WithdrawBean) {
+                  if(t.code == 0){
+                      Toasty.success(this@ThirdActivity,t.data.opening_bank).show()
+                  }else{
+                      onRequestError(t)
+                  }
                 }
 
-                override fun onSubscribe(d: Disposable) {
+                override fun onRequestError(t: WithdrawBean?) {
+                    Toasty.error(this@ThirdActivity,t?.error_msg!!).show()
                 }
 
-                override fun onNext(t: WithdrawBean) {
-                    ToastUtils.showShort(t.data.bank_name)
-                }
-
-                override fun onError(e: Throwable) {
-                    ToastUtils.showShort(e.message)
+                override fun onFinishResponse() {
                 }
 
             })
