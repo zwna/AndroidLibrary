@@ -45,9 +45,9 @@ public class RetrofitFactory {
             httpClientBuilder.sslSocketFactory(SslSocketFactory.getSSLSocketFactory(),new UnSafeTrustManager());
         }
         //开发模式下添加打印
-        if (BuildConfig.DEBUG){
+//        if (BuildConfig.DEBUG){
             httpClientBuilder.addInterceptor(new JsonInterceptor());
-        }
+//        }
         OkHttpClient httpClient = httpClientBuilder.build();
 
 
