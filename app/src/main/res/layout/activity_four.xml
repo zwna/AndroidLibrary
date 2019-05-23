@@ -4,6 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         tools:context=".FourActivity">
 
@@ -18,5 +19,23 @@
             android:layout_height="wrap_content"
             android:onClick="unZipFile"
             android:text="点击解压文件"/>
+
+    <org.mt.androidlibrary.custom_view.RoundRelativeLayout
+            android:layout_width="match_parent"
+            app:rv_backgroundColor="@color/colorPrimary"
+            app:rv_cornerRadius="10dp"
+            android:gravity="center"
+            android:layout_height="50dp">
+
+        <org.mt.androidlibrary.custom_view.RoundTextView
+                android:layout_width="wrap_content"
+                android:text="你好，我是RoundTextView"
+                android:textColor="@android:color/holo_green_light"
+                android:textSize="20sp"
+                app:rv_cornerRadius="10dp"
+                app:rv_backgroundColor="@android:color/holo_red_dark"
+                android:layout_height="wrap_content"/>
+
+    </org.mt.androidlibrary.custom_view.RoundRelativeLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

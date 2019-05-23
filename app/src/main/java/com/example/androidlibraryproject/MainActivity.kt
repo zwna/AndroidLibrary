@@ -1,22 +1,27 @@
 package com.example.androidlibraryproject
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.blankj.utilcode.util.*
 import org.mt.androidlibrary.SystemActivityUtils
 import org.mt.androidlibrary.app_update.AppUpdateUtils
+import org.mt.androidlibrary.base.ui.BaseActivity
 import org.mt.androidlibrary.toast.custom_toast.Toasty
 
 @SuppressLint("SetTextI18n")
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<com.example.androidlibraryproject.databinding.ActivityMainBinding>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+    override fun getLayoutId() = R.layout.activity_main
+
+    override fun initView(savedInstanceState: Bundle?) {
     }
+
+    override fun initData(savedInstanceState: Bundle?) {
+    }
+
 
     fun showToastNormalNoIcon(view: View){
         Toasty.normal(this@MainActivity,"这是正常的且没有图标的Toast").show()
@@ -54,6 +59,7 @@ class MainActivity : AppCompatActivity() {
           ToastUtils.showShort("底部导航栏不可见")
           BarUtils.setNavBarVisibility(this@MainActivity,true)
       }
+
     }
 
     fun startCall(view:View){

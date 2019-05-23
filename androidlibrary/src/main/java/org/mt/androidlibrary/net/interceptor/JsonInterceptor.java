@@ -1,6 +1,5 @@
 package org.mt.androidlibrary.net.interceptor;
 
-import android.util.Log;
 import com.blankj.utilcode.util.LogUtils;
 import com.google.gson.Gson;
 import okhttp3.*;
@@ -66,7 +65,7 @@ public class JsonInterceptor implements Interceptor {
             rBody = buffer.clone().readString(charset);
         }
 
-        LogUtils.d("OkHttp", "响应：" + new Gson().toJson(rBody).replace("\\", ""));
+        LogUtils.d("OkHttp", "响应：" + new Gson().toJson(rBody));
 
         return response;
     }

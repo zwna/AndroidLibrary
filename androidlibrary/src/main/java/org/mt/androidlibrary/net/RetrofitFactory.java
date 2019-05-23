@@ -3,6 +3,7 @@ package org.mt.androidlibrary.net;
 import android.annotation.SuppressLint;
 import android.text.TextUtils;
 import androidx.core.util.Preconditions;
+import com.blankj.utilcode.util.StringUtils;
 import okhttp3.OkHttpClient;
 import org.mt.androidlibrary.BuildConfig;
 import org.mt.androidlibrary.net.config.ApiConfig;
@@ -38,16 +39,13 @@ public class RetrofitFactory {
                 .retryOnConnectionFailure(true)
                 .addInterceptor(new HeaderInterceptor(apiConfig.getHeads()))
                 .addInterceptor(new CommonParamInterceptor(apiConfig.getComnParams()))
-                .addInterceptor(new RetryInterceptor(apiConfig.getMaxRetry()));
+                .addInterceptor(new RetryInterceptor(apiConfig.getMaxRetry()))
+                .addInterceptor(new JsonInterceptor());
 
         //信任https证书
         if (apiConfig.getOpenHttps()){
             httpClientBuilder.sslSocketFactory(SslSocketFactory.getSSLSocketFactory(),new UnSafeTrustManager());
         }
-        //开发模式下添加打印
-//        if (BuildConfig.DEBUG){
-            httpClientBuilder.addInterceptor(new JsonInterceptor());
-//        }
         OkHttpClient httpClient = httpClientBuilder.build();
 
 
@@ -57,7 +55,9 @@ public class RetrofitFactory {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create());
 
         //默认使用配置的mBaseUrl
-        mRetrofit = mBuilder.baseUrl(apiConfig.getBaseUrl()).build();
+        if(!StringUtils.isEmpty(apiConfig.getBaseUrl())) {
+            mRetrofit = mBuilder.baseUrl(apiConfig.getBaseUrl()).build();
+        }
     }
 
     /**
