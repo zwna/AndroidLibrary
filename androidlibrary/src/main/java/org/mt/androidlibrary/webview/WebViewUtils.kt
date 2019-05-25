@@ -44,5 +44,16 @@ class WebViewUtils {
             return bitmap
         }
 
+        /**
+         * 当拥有WebView的界面被销毁的时候释放WebView
+         * @param webView 目标WebView
+         */
+        fun releaseWebView(webView: WebView){
+            webView.clearCache(true)
+            webView.loadDataWithBaseURL(null, "", "text/html", "utf-8", null)
+            webView.clearHistory()
+            webView.removeAllViews()
+            webView.destroy()
+        }
     }
 }
