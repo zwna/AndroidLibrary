@@ -11,19 +11,22 @@ import android.view.View
 import android.webkit.WebViewClient
 import androidx.core.content.ContextCompat
 import com.blankj.utilcode.util.ActivityUtils
+import com.example.androidlibraryproject.databinding.ActivityMainBinding
+import com.example.androidlibraryproject.databinding.ActivitySecondBinding
 import kotlinx.android.synthetic.main.activity_second.*
+import org.mt.androidlibrary.base.ui.BaseActivity
 import org.mt.androidlibrary.webview.WebViewUtils
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
 
-class SecondActivity : AppCompatActivity() {
+class SecondActivity : BaseActivity<ActivitySecondBinding>() {
+    override fun getLayoutId(): Int {
+        return R.layout.activity_second
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        WebViewUtils.enableSlowWholeDocumentDraw()
-        setContentView(R.layout.activity_second)
+    override fun initView(savedInstanceState: Bundle?) {
         webView.loadUrl("http://www.baidu.com")
         webView.webViewClient = WebViewClient()
 
@@ -34,6 +37,14 @@ class SecondActivity : AppCompatActivity() {
         numberProgressBar.suffix = "进度"
         numberProgressBar.reachedBarColor = ContextCompat.getColor(this,R.color.colorAccent)
         numberProgressBar.unreachedBarColor = ContextCompat.getColor(this,android.R.color.holo_green_light)
+    }
+
+    override fun settingBeforeSetContentView(savedInstanceState: Bundle?) {
+        WebViewUtils.enableSlowWholeDocumentDraw()
+    }
+
+    override fun initData(savedInstanceState: Bundle?) {
+
     }
 
 

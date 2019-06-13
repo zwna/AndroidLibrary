@@ -1,8 +1,6 @@
 package com.example.androidlibraryproject
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.util.ArrayMap
 import android.view.View
 import com.blankj.utilcode.util.ActivityUtils
@@ -14,6 +12,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_third.*
 import org.mt.androidlibrary.AssetsManageUtils
 import org.mt.androidlibrary.MMKVUtils
+import org.mt.androidlibrary.base.ui.BaseActivity
 import org.mt.androidlibrary.net.RetrofitFactory
 import org.mt.androidlibrary.net.config.ApiConfig
 import org.mt.androidlibrary.rxjava.callback.RxJavaCallBack
@@ -21,23 +20,28 @@ import org.mt.androidlibrary.toast.custom_toast.Toasty
 import java.util.concurrent.Executors
 import io.reactivex.functions.Consumer as Consumer
 
-class ThirdActivity : AppCompatActivity() {
+class ThirdActivity : BaseActivity<com.example.androidlibraryproject.databinding.ActivityThirdBinding>() {
+    override fun getLayoutId(): Int {
+        return R.layout.activity_third
+    }
 
-    private val param = HashMap<String,String>()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_third)
+    override fun initView(savedInstanceState: Bundle?) {
         Executors.newFixedThreadPool(5).execute{
             val json = AssetsManageUtils.getAssetsJson("area.json",this)
             runOnUiThread {
-                  SpanUtils.with(text_assetsJsonContent).append(json).setBoldItalic()
-                      .setUnderline()
-                      .setStrikethrough()
-                      .create()
+                SpanUtils.with(text_assetsJsonContent).append(json).setBoldItalic()
+                    .setUnderline()
+                    .setStrikethrough()
+                    .create()
             }
         }
     }
+
+    override fun initData(savedInstanceState: Bundle?) {
+    }
+
+    private val param = HashMap<String,String>()
+
 
     fun saveDataByMMKV(v:View){
         MMKVUtils.getMMKVBySingleThreaded().encode("key","value")
@@ -77,6 +81,10 @@ class ThirdActivity : AppCompatActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe(object: RxJavaCallBack<WithdrawBean>(){
+                override fun onSuccess(t: WithdrawBean?) {
+
+                }
+
                 override fun onNextResponse(t: WithdrawBean) {
                   if(t.code == 0){
                       Toasty.success(this@ThirdActivity,t.data.opening_bank).show()

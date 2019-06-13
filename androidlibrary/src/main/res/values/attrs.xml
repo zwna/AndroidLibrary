@@ -138,4 +138,18 @@
         <attr name="rv_isRippleEnable"/>
     </declare-styleable>
 
+    <declare-styleable name="SwipeBackLayout">
+        <attr name="swipeBackFactor" format="float"/>
+        <attr name="maskAlpha" format="integer"/>
+        <attr name="isSwipeFromEdge" format="boolean"/>
+        <attr name="directionMode">
+            <enum name="left" value="1" />
+            <enum name="right" value="2" />
+            <enum name="top" value="4" />
+            <enum name="bottom" value="8" />
+        </attr>
+    </declare-styleable>
+
+    <attr name="SwipeBackLayoutStyle" format="reference"/>
+
 </resources>

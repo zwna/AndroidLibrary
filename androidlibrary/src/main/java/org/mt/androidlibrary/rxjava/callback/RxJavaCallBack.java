@@ -33,6 +33,11 @@ public abstract class RxJavaCallBack<T> implements Observer<T> {
     }
 
     /**
+     * 当成功接收数据的时候回调
+     */
+    public abstract void onSuccess(T t);
+
+    /**
      * 当请求到服务器数据后会有一个字段专门来标识是否是正确的数据,该方法是请求到数据,但不是正确的数据的时候调用
      */
     public abstract void onRequestError(T t);

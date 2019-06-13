@@ -17,6 +17,11 @@ class MainActivity : BaseActivity<com.example.androidlibraryproject.databinding.
     override fun getLayoutId() = R.layout.activity_main
 
     override fun initView(savedInstanceState: Bundle?) {
+
+    }
+
+    override fun isSupportSwipeBack(): Boolean {
+        return false
     }
 
     override fun initData(savedInstanceState: Bundle?) {

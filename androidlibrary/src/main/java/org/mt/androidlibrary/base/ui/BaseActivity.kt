@@ -5,11 +5,22 @@ import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.blankj.utilcode.util.LogUtils
 import com.trello.rxlifecycle3.components.support.RxAppCompatActivity
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import org.mt.androidlibrary.EventBusUtil
 import org.mt.androidlibrary.event.DefaultEvent
+import org.mt.androidlibrary.slide_back.SwipeBackActivityHelper
+import org.mt.androidlibrary.slide_back.Util
+import org.mt.androidlibrary.slide_back.Util.convertActivityFromTranslucent
+import org.mt.androidlibrary.slide_back.SwipeBackLayout
+
+
+
+
+
+
 
 /**
  *@Description:Activity的基类
@@ -22,6 +33,8 @@ abstract class BaseActivity<BindingType:ViewDataBinding> : RxAppCompatActivity()
 
     lateinit var binding: BindingType
 
+    private lateinit var mHelper: SwipeBackActivityHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         settingBeforeSetContentView(savedInstanceState)
@@ -31,9 +44,59 @@ abstract class BaseActivity<BindingType:ViewDataBinding> : RxAppCompatActivity()
         }
 
         context = this
+        mHelper =  SwipeBackActivityHelper(this)
+        //是否支持缩放动画
+        mHelper.onActivityCreate(isSupportFinishAnim())
+        //是否支持滑动返回
+        setSwipeBackEnable(isSupportSwipeBack())
+
         initView(savedInstanceState)
         EventBusUtil.regist(this)
         initData(savedInstanceState)
+    }
+
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
+        LogUtils.e("zh","onPostCreate  mActivity ========" + BaseActivity::class.java.simpleName)
+        mHelper.onPostCreate();
+    }
+
+    override fun onEnterAnimationComplete() {
+        super.onEnterAnimationComplete()
+        if (getSwipeBackLayout().finishAnim && !getSwipeBackLayout().mIsActivitySwipeing) {
+            convertActivityFromTranslucent(this)
+            getSwipeBackLayout().mIsActivityTranslucent = false
+            LogUtils.e("zh", "onEnterAnimationComplete  mActivity ========" + BaseActivity::class.java.simpleName)
+        }
+    }
+
+    /**
+     * 是否支持滑动返回。这里在父类中默认返回 true 来支持滑动返回，如果某个界面不想支持滑动返回则重写该方法返回 false 即可
+     * @return
+     */
+    open fun isSupportSwipeBack(): Boolean {
+        return true
+    }
+
+    open fun isSupportFinishAnim(): Boolean {
+        return true
+    }
+
+    open fun getSwipeBackLayout(): SwipeBackLayout {
+        return mHelper.swipeBackLayout
+    }
+
+    open fun setSwipeBackEnable(enable: Boolean) {
+        getSwipeBackLayout().setEnableGesture(enable)
+    }
+
+    fun getSwipeBackEnable(): Boolean {
+        return getSwipeBackLayout().swipeBackEnable
+    }
+
+    override fun finish() {
+        super.finish()
+        mHelper.finish()
     }
 
     /**

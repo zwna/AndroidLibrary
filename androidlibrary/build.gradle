@@ -28,13 +28,13 @@ android {
     }
     buildTypes {
         debug {
-            minifyEnabled true//关闭混淆
+            minifyEnabled true//开启混淆
             zipAlignEnabled true//Zipalign优化
             signingConfig signingConfigs.config
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         release {
-            minifyEnabled true//关闭混淆
+            minifyEnabled true//开启混淆
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             zipAlignEnabled true//Zipalign优化
             signingConfig signingConfigs.config
@@ -63,19 +63,19 @@ dependencies {
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api 'com.android.support:design:28.0.0'
     api 'com.android.support:palette-v7:28.0.0'
-    api 'com.tencent:mmkv:1.0.19'
-    api 'com.blankj:utilcodex:1.23.7'
-    api 'com.squareup.retrofit2:retrofit:2.5.0'
-    api 'io.reactivex.rxjava2:rxjava:2.2.8'
+    api 'com.tencent:mmkv:1.0.22'
+    api 'com.blankj:utilcodex:1.24.2'
+    api 'com.squareup.retrofit2:retrofit:2.6.0'
+    api 'io.reactivex.rxjava2:rxjava:2.2.9'
     api 'io.reactivex.rxjava2:rxandroid:2.1.1'
-    api 'com.squareup.retrofit2:converter-gson:2.5.0'
-    api 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
+    api 'com.squareup.retrofit2:converter-gson:2.6.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.6.0'
     api 'com.trello.rxlifecycle3:rxlifecycle-kotlin:3.0.0'
     api 'com.trello.rxlifecycle3:rxlifecycle-kotlin:3.0.0'
     api 'com.trello.rxlifecycle3:rxlifecycle-android-lifecycle-kotlin:3.0.0'
     api 'com.trello.rxlifecycle3:rxlifecycle-components:3.0.0'
-    api 'com.king.app:app-updater:1.0.3'
-    api 'com.github.AriesHoo.UIWidget:widget-core:3.2.14'
+    api 'com.king.app:app-updater:1.0.4'
+    api 'com.github.AriesHoo.UIWidget:widget-core:3.2.15'
     api 'com.xgr.easypay:EasyPay:1.0.2'
     api 'org.greenrobot:eventbus:3.1.1'
 }

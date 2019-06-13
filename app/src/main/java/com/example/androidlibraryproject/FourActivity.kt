@@ -1,22 +1,25 @@
 package com.example.androidlibraryproject
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.view.View
 import com.blankj.utilcode.util.FileUtils
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.ZipUtils
+import org.mt.androidlibrary.base.ui.BaseActivity
 import java.io.File
 
-class FourActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_four)
-
-
+class FourActivity : BaseActivity<com.example.androidlibraryproject.databinding.ActivityFourBinding>() {
+    override fun getLayoutId(): Int {
+        return R.layout.activity_four
     }
+
+    override fun initView(savedInstanceState: Bundle?) {
+    }
+
+    override fun initData(savedInstanceState: Bundle?) {
+    }
+
 
     fun zipFile(v:View){
         val fileByPath =

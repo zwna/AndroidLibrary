@@ -3,6 +3,7 @@ package org.mt.androidlibrary.rxjava
 import com.trello.rxlifecycle3.android.ActivityEvent
 import com.trello.rxlifecycle3.android.FragmentEvent
 import com.trello.rxlifecycle3.components.RxActivity
+import com.trello.rxlifecycle3.components.RxDialogFragment
 import com.trello.rxlifecycle3.components.support.RxAppCompatActivity
 import com.trello.rxlifecycle3.components.support.RxFragment
 import io.reactivex.Observable
@@ -43,9 +44,9 @@ class RxJavaUtils {
         }
 
         /**
-         * 在V4包下的Fragment中使用RxJava进行网络请求
+         * 在support包下的Fragment中使用RxJava进行网络请求
          */
-        fun <T> useInV4Fragment(
+        fun <T> useInSupportFragment(
             observable: Observable<T>,
             rxFragment: RxFragment,
             baseCallBack: RxJavaCallBack<T>
@@ -91,9 +92,9 @@ class RxJavaUtils {
         }
 
         /**
-         * 在V4包下的Fragment中使用RxJava进行网络请求，当Fragment销毁的时候解除订阅
+         * 在support包下的Fragment中使用RxJava进行网络请求，当Fragment销毁的时候解除订阅
          */
-        fun <T> useInV4FragmentOnDestory(
+        fun <T> useInSupportFragmentOnDestory(
             observable: Observable<T>,
             rxFragment: RxFragment,
             baseCallBack: RxJavaCallBack<T>
@@ -103,9 +104,9 @@ class RxJavaUtils {
         }
 
         /**
-         * 在V4包下的Fragment中使用RxJava进行网络请求，当Fragment销毁视图的时候解除订阅
+         * 在support包下的Fragment中使用RxJava进行网络请求，当Fragment销毁视图的时候解除订阅
          */
-        fun <T> useInV4FragmentOnDestoryView(
+        fun <T> useInSupportFragmentOnDestoryView(
             observable: Observable<T>,
             rxFragment: RxFragment,
             baseCallBack: RxJavaCallBack<T>
@@ -135,6 +136,46 @@ class RxJavaUtils {
             baseCallBack: RxJavaCallBack<T>
         ) {
             observable.compose(rxFragment.bindUntilEvent(FragmentEvent.DESTROY_VIEW))
+                .observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(baseCallBack)
+        }
+
+        /**
+         * 在app包下的DialogFragment中使用RxJava进行网络请求
+         */
+        fun <T> useInRxDialogFragment(observable: Observable<T>,
+                                      rxDialogFragment: RxDialogFragment,
+                                      baseCallBack: RxJavaCallBack<T>){
+            observable.compose(rxDialogFragment.bindToLifecycle())
+                .observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(baseCallBack)
+        }
+
+        /**
+         * 在app包下的DialogFragment中使用RxJava进行网络请求，当DialogFragment销毁视图的时候解除订阅
+         */
+        fun <T> useInRxDialogFragmentOnDestoryView(observable: Observable<T>,
+                                      rxDialogFragment: RxDialogFragment,
+                                      baseCallBack: RxJavaCallBack<T>){
+            observable.compose(rxDialogFragment.bindUntilEvent(FragmentEvent.DESTROY_VIEW))
+                .observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(baseCallBack)
+        }
+
+        /**
+         * 在support包下的DialogFragment中使用RxJava进行网络请求
+         */
+        fun <T> useInSupportRxDialogFragment(observable: Observable<T>,
+                                      rxDialogFragment: com.trello.rxlifecycle3.components.support.RxDialogFragment,
+                                      baseCallBack: RxJavaCallBack<T>){
+            observable.compose(rxDialogFragment.bindToLifecycle())
+                .observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(baseCallBack)
+        }
+
+        /**
+         * 在support包下的DialogFragment中使用RxJava进行网络请求，当DialogFragment销毁视图的时候解除订阅
+         */
+        fun <T> useInSupportRxDialogFragmentOnDestoryView(observable: Observable<T>,
+                                                   rxDialogFragment: com.trello.rxlifecycle3.components.support.RxDialogFragment,
+                                                   baseCallBack: RxJavaCallBack<T>){
+            observable.compose(rxDialogFragment.bindUntilEvent(FragmentEvent.DESTROY_VIEW))
                 .observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(baseCallBack)
         }
     }
