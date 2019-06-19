@@ -16,9 +16,9 @@ import java.util.Map;
  */
 public class CommonParamInterceptor implements Interceptor {
 
-    private HashMap<String,Object> commonParam;
+    private HashMap<String,String> commonParam;
 
-    public CommonParamInterceptor(HashMap<String,Object> hashMap) {
+    public CommonParamInterceptor(HashMap<String,String> hashMap) {
         commonParam = hashMap;
     }
 
@@ -28,8 +28,8 @@ public class CommonParamInterceptor implements Interceptor {
         Request request;
         HttpUrl.Builder modifiedUrlBuilder = originalRequest.url().newBuilder();
 
-        for(Map.Entry<String,Object> param:commonParam.entrySet()){
-            modifiedUrlBuilder.addQueryParameter(param.getKey(),(String) param.getValue());
+        for(Map.Entry<String,String> param:commonParam.entrySet()){
+            modifiedUrlBuilder.addQueryParameter(param.getKey(),param.getValue());
         }
 
         request = originalRequest.newBuilder().url(modifiedUrlBuilder.build()).build();

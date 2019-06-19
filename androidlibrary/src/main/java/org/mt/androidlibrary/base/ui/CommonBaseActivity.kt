@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import com.blankj.utilcode.util.LogUtils
 import com.trello.rxlifecycle3.components.support.RxAppCompatActivity
 import org.greenrobot.eventbus.Subscribe
@@ -12,26 +11,17 @@ import org.greenrobot.eventbus.ThreadMode
 import org.mt.androidlibrary.EventBusUtil
 import org.mt.androidlibrary.event.DefaultEvent
 import org.mt.androidlibrary.slide_back.SwipeBackActivityHelper
-import org.mt.androidlibrary.slide_back.Util
-import org.mt.androidlibrary.slide_back.Util.convertActivityFromTranslucent
 import org.mt.androidlibrary.slide_back.SwipeBackLayout
-
-
-
-
-
-
+import org.mt.androidlibrary.slide_back.Util
 
 /**
- *@Description:Activity的基类
+ *@Description:没有使用databinding的基类Activity
  *@Author:zwna
- *@Date:2019-04-30
+ *@Date:2019-06-19
  */
-abstract class BaseActivity<BindingType:ViewDataBinding> : RxAppCompatActivity() {
+abstract class CommonBaseActivity:RxAppCompatActivity() {
 
-    lateinit var context:Context
-
-    lateinit var binding: BindingType
+    lateinit var context: Context
 
     private lateinit var mHelper: SwipeBackActivityHelper
 
@@ -40,7 +30,7 @@ abstract class BaseActivity<BindingType:ViewDataBinding> : RxAppCompatActivity()
         settingBeforeSetContentView(savedInstanceState)
         val layoutId = getLayoutId()
         if(layoutId != 0){
-            binding = DataBindingUtil.setContentView(this, layoutId)
+            setContentView(layoutId)
         }
 
         context = this
@@ -57,16 +47,16 @@ abstract class BaseActivity<BindingType:ViewDataBinding> : RxAppCompatActivity()
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
-        LogUtils.e("zh","onPostCreate  mActivity ========" + BaseActivity::class.java.simpleName)
+        LogUtils.e("zh","onPostCreate  mActivity ========" + DataBindingBaseActivity::class.java.simpleName)
         mHelper.onPostCreate();
     }
 
     override fun onEnterAnimationComplete() {
         super.onEnterAnimationComplete()
         if (getSwipeBackLayout().finishAnim && !getSwipeBackLayout().mIsActivitySwipeing) {
-            convertActivityFromTranslucent(this)
+            Util.convertActivityFromTranslucent(this)
             getSwipeBackLayout().mIsActivityTranslucent = false
-            LogUtils.e("zh", "onEnterAnimationComplete  mActivity ========" + BaseActivity::class.java.simpleName)
+            LogUtils.e("zh", "onEnterAnimationComplete  mActivity ========" + DataBindingBaseActivity::class.java.simpleName)
         }
     }
 
@@ -102,10 +92,10 @@ abstract class BaseActivity<BindingType:ViewDataBinding> : RxAppCompatActivity()
     /**
      * 为控件设置单击事件
      */
-    fun setViewsOnClickListener(listener: View.OnClickListener,vararg view:View){
-      view.forEach {
-          it.setOnClickListener(listener)
-      }
+    fun setViewsOnClickListener(listener: View.OnClickListener, vararg view: View){
+        view.forEach {
+            it.setOnClickListener(listener)
+        }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -141,5 +131,4 @@ abstract class BaseActivity<BindingType:ViewDataBinding> : RxAppCompatActivity()
         EventBusUtil.unRegist(this)
         super.onDestroy()
     }
-
 }

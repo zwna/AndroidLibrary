@@ -25,8 +25,8 @@ import java.io.File
  */
 class AppUpdateUtils private constructor(){
 
-
     companion object {
+
         //默认的主色调
         private var defaultThemeColor = Color.parseColor("#e94339")
 

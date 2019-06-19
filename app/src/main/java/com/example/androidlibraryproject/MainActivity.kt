@@ -7,11 +7,11 @@ import android.widget.Toast
 import com.blankj.utilcode.util.*
 import org.mt.androidlibrary.SystemActivityUtils
 import org.mt.androidlibrary.app_update.AppUpdateUtils
-import org.mt.androidlibrary.base.ui.BaseActivity
+import org.mt.androidlibrary.base.ui.DataBindingBaseActivity
 import org.mt.androidlibrary.toast.custom_toast.Toasty
 
 @SuppressLint("SetTextI18n")
-class MainActivity : BaseActivity<com.example.androidlibraryproject.databinding.ActivityMainBinding>() {
+class MainActivity : DataBindingBaseActivity<com.example.androidlibraryproject.databinding.ActivityMainBinding>() {
 
 
     override fun getLayoutId() = R.layout.activity_main
@@ -53,6 +53,7 @@ class MainActivity : BaseActivity<com.example.androidlibraryproject.databinding.
     }
 
     fun updateApp(view:View){
+
         AppUpdateUtils.updateAppVersion(this@MainActivity,"1.测试安装\n2.修复BUG\n3.优化体验",false,"http://ateduoduo.118.easysoft168.com/Uploads/apk/atdd_android_4.apk","更新日志","升级",R.mipmap.lock)
     }
 

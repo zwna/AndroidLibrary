@@ -24,7 +24,7 @@ public class ApiConfig implements Serializable {
     //公共头参数
     private static ArrayMap<String, String> mHeads;
     //公共参数
-    private static HashMap<String, Object> mCommonParams = new HashMap<>();
+    private static HashMap<String, String> mCommonParams = new HashMap<>();
     //是否信任https证书 true:信任https证书 false:不信任https证书
     private static boolean mOpenHttps;
 
@@ -72,11 +72,11 @@ public class ApiConfig implements Serializable {
         ApiConfig.mHeads = mHeads;
     }
 
-    public HashMap<String, Object> getComnParams() {
+    public HashMap<String, String> getComnParams() {
         return mCommonParams;
     }
 
-    public void setComnParams(HashMap<String, Object> mCommonParams) {
+    public void setComnParams(HashMap<String, String> mCommonParams) {
         ApiConfig.mCommonParams = mCommonParams;
     }
 
@@ -91,7 +91,7 @@ public class ApiConfig implements Serializable {
         private int connectTimeout;
         private int maxRetry = 2;
         private ArrayMap<String, String> heads;
-        private HashMap<String, Object> comnParams;
+        private HashMap<String, String> comnParams;
         private boolean openHttps;
 
         public Builder setBaseUrl(String baseUrl) {
@@ -124,7 +124,7 @@ public class ApiConfig implements Serializable {
             return this;
         }
 
-        public Builder setComnParams(HashMap<String, Object> params) {
+        public Builder setComnParams(HashMap<String, String> params) {
             this.comnParams = params;
             return this;
         }

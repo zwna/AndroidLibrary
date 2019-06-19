@@ -19,7 +19,7 @@ import androidx.core.view.ViewCompat;
 import androidx.customview.widget.ViewDragHelper;
 import com.blankj.utilcode.util.LogUtils;
 import org.mt.androidlibrary.R;
-import org.mt.androidlibrary.base.ui.BaseActivity;
+import org.mt.androidlibrary.base.ui.DataBindingBaseActivity;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -126,9 +126,9 @@ public class SwipeBackLayout extends FrameLayout {
 
         mTopActivity = activity;
         Activity backActivity  = SlideFinishManager.getInstance().getPenultimateActivity();
-        if (null != backActivity &&  backActivity instanceof BaseActivity) {
+        if (null != backActivity &&  backActivity instanceof DataBindingBaseActivity) {
             mBackActivityWeakRf = new WeakReference<>(backActivity);
-            SwipeBackLayout previousSlideLayout = ((BaseActivity) backActivity).getSwipeBackLayout();
+            SwipeBackLayout previousSlideLayout = ((DataBindingBaseActivity) backActivity).getSwipeBackLayout();
             if(previousSlideLayout != null){
                 mPreviousChild = previousSlideLayout.getChildAt(0);
             }

@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import com.trello.rxlifecycle3.components.support.RxFragment
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -13,13 +11,12 @@ import org.mt.androidlibrary.EventBusUtil
 import org.mt.androidlibrary.event.DefaultEvent
 
 /**
- *@Description:Fragment的基类
+ *@Description:没有使用databinding的Fragment基类
  *@Author:zwna
- *@Date:2019-05-22
+ *@Date:2019-06-19
  */
-abstract class BaseFragment<BindingType:ViewDataBinding>:RxFragment() {
+abstract class CommonBaseFragment:RxFragment() {
 
-    lateinit var binding: BindingType
     private var mView: View? = null
     /**
      * 是否是第一次加载数据 true:是 false:不是
@@ -31,8 +28,7 @@ abstract class BaseFragment<BindingType:ViewDataBinding>:RxFragment() {
         EventBusUtil.regist(this)//注册EventBus
         val layoutId = getLayoutId()
         if(layoutId != 0){
-            binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
-            mView = binding.root
+            mView = inflater.inflate(getLayoutId(), container, false)
         }
         initView()
         return mView

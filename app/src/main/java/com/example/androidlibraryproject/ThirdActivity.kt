@@ -12,7 +12,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_third.*
 import org.mt.androidlibrary.AssetsManageUtils
 import org.mt.androidlibrary.MMKVUtils
-import org.mt.androidlibrary.base.ui.BaseActivity
+import org.mt.androidlibrary.base.ui.DataBindingBaseActivity
 import org.mt.androidlibrary.net.RetrofitFactory
 import org.mt.androidlibrary.net.config.ApiConfig
 import org.mt.androidlibrary.rxjava.callback.RxJavaCallBack
@@ -20,7 +20,7 @@ import org.mt.androidlibrary.toast.custom_toast.Toasty
 import java.util.concurrent.Executors
 import io.reactivex.functions.Consumer as Consumer
 
-class ThirdActivity : BaseActivity<com.example.androidlibraryproject.databinding.ActivityThirdBinding>() {
+class ThirdActivity : DataBindingBaseActivity<com.example.androidlibraryproject.databinding.ActivityThirdBinding>() {
     override fun getLayoutId(): Int {
         return R.layout.activity_third
     }

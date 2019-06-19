@@ -39,5 +39,23 @@
 
     </org.mt.androidlibrary.custom_view.RoundRelativeLayout>
 
+    <Button
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="点击跳转到QQ个人聊天"
+            android:onClick="jumpPersonalQQ"/>
+
+    <Button
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="点击跳转到QQ群组聊天"
+            android:onClick="jumpQQGroup"/>
+
+    <Button
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="点击跳转到微信"
+            android:onClick="jumpWX"/>
+
 </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

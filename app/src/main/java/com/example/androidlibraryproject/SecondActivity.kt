@@ -3,7 +3,6 @@ package com.example.androidlibraryproject
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
@@ -11,17 +10,16 @@ import android.view.View
 import android.webkit.WebViewClient
 import androidx.core.content.ContextCompat
 import com.blankj.utilcode.util.ActivityUtils
-import com.example.androidlibraryproject.databinding.ActivityMainBinding
 import com.example.androidlibraryproject.databinding.ActivitySecondBinding
 import kotlinx.android.synthetic.main.activity_second.*
-import org.mt.androidlibrary.base.ui.BaseActivity
+import org.mt.androidlibrary.base.ui.DataBindingBaseActivity
 import org.mt.androidlibrary.webview.WebViewUtils
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
 
-class SecondActivity : BaseActivity<ActivitySecondBinding>() {
+class SecondActivity : DataBindingBaseActivity<ActivitySecondBinding>() {
     override fun getLayoutId(): Int {
         return R.layout.activity_second
     }

@@ -1,12 +1,13 @@
 package org.mt.androidlibrary
 
+import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.provider.Settings.ACTION_SETTINGS
 import com.blankj.utilcode.util.ActivityUtils
 import com.blankj.utilcode.util.AppUtils
-
-
+import com.blankj.utilcode.util.ToastUtils
 
 
 /**
@@ -104,6 +105,51 @@ class SystemActivityUtils private constructor(){
             val uri = Uri.parse("mailto:$emailAddress")
             val it = Intent(Intent.ACTION_SENDTO, uri)
             ActivityUtils.startActivity(it)
+        }
+
+        /**
+         * 打开QQ个人界面
+         * @param qqNumber 目标QQ号码
+         */
+        fun openQQ(context: Context,qqNumber:String){
+          if(CommonUtils.checkAppInstalled(context,"com.tencent.mobileqq")){
+              val qqUrl = "mqqwpa://im/chat?chat_type=wpa&uin=$qqNumber&version=1"
+              val intent = Intent(Intent.ACTION_VIEW, Uri.parse(qqUrl))
+              ActivityUtils.startActivity(intent)
+          }else{
+              ToastUtils.showShort("本机未安装QQ")
+          }
+        }
+
+        /**
+         * 打开QQ群聊界面
+         * @param qqNumber 目标QQ号码
+         */
+        fun openQQGroup(context: Context,qqNumber:String){
+            if(CommonUtils.checkAppInstalled(context,"com.tencent.mobileqq")){
+                val qqUrl = "mqqwpa://im/chat?chat_type=group&uin=$qqNumber&version=1"
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(qqUrl))
+                ActivityUtils.startActivity(intent)
+            }else{
+                ToastUtils.showShort("本机未安装QQ")
+            }
+        }
+
+        /**
+         * 打开微信
+         */
+        fun openWX(context: Context){
+            if(CommonUtils.checkAppInstalled(context,"com.tencent.mm")){
+                val intent = Intent()
+                val cmp = ComponentName("com.tencent.mm","com.tencent.mm.ui.LauncherUI")
+                intent.action = Intent.ACTION_MAIN
+                intent.addCategory(Intent.CATEGORY_LAUNCHER)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                intent.component = cmp
+                ActivityUtils.startActivity(intent)
+            }else{
+                ToastUtils.showShort("本机未安装微信")
+            }
         }
     }
 }
