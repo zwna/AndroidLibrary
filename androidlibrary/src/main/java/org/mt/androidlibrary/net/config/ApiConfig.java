@@ -5,6 +5,7 @@ import android.util.ArrayMap;
 import java.io.Serializable;
 import java.util.HashMap;
 
+
 /**
  * @Description:Retrofit相关的配置类
  * @Author:zwna

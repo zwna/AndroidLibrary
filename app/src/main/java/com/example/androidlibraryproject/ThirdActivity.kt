@@ -18,7 +18,6 @@ import org.mt.androidlibrary.net.config.ApiConfig
 import org.mt.androidlibrary.rxjava.callback.RxJavaCallBack
 import org.mt.androidlibrary.toast.custom_toast.Toasty
 import java.util.concurrent.Executors
-import io.reactivex.functions.Consumer as Consumer
 
 class ThirdActivity : DataBindingBaseActivity<com.example.androidlibraryproject.databinding.ActivityThirdBinding>() {
     override fun getLayoutId(): Int {
@@ -59,7 +58,7 @@ class ThirdActivity : DataBindingBaseActivity<com.example.androidlibraryproject.
        val commonHeaders =  ArrayMap<String,String>()
         commonHeaders["source"] = "jptcashier"
         commonHeaders["appversion"] = "cashier_" + AppUtils.getAppVersionCode(AppUtils.getAppPackageName())
-       val commonParam = HashMap<String,Any>()
+       val commonParam = java.util.HashMap<String,String>()
         commonParam["appid"] = "1"
         commonParam["PHPSESSID"] = "1111111111"
         commonParam["token"] = "11111111111111111111111111111111"
