@@ -12,10 +12,6 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        manifestPlaceholders = [
-                APPLICATION_ID: rootProject.ext.packageName.mainApplicationId,
-        ]
-
         signingConfigs {
             config {
                 keyAlias 'alien'
