@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.trello.rxlifecycle3.components.support.RxFragment
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
-import org.mt.androidlibrary.EventBusUtil
+import org.mt.androidlibrary.other.utils.EventBusUtils
 import org.mt.androidlibrary.event.DefaultEvent
 
 /**
@@ -25,7 +25,7 @@ abstract class CommonBaseFragment:RxFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        EventBusUtil.regist(this)//注册EventBus
+        EventBusUtils.regist(this)//注册EventBus
         val layoutId = getLayoutId()
         if(layoutId != 0){
             mView = inflater.inflate(getLayoutId(), container, false)
@@ -85,7 +85,7 @@ abstract class CommonBaseFragment:RxFragment() {
     }
 
     override fun onDestroyView() {
-        EventBusUtil.unRegist(this)//注销EventBus
+        EventBusUtils.unRegist(this)//注销EventBus
         super.onDestroyView()
     }
 }

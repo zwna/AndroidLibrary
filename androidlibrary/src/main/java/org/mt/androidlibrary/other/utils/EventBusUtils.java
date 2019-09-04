@@ -1,4 +1,4 @@
-package org.mt.androidlibrary;
+package org.mt.androidlibrary.other.utils;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -7,7 +7,7 @@ import org.greenrobot.eventbus.EventBus;
  *@Author:zwna
  *@Date:2019-05-17
  */
-public class EventBusUtil {
+public class EventBusUtils {
 
     public static void regist(Object o) {
         if (!EventBus.getDefault().isRegistered(o))

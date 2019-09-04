@@ -3,12 +3,11 @@ package org.mt.androidlibrary.base.ui
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import androidx.databinding.DataBindingUtil
 import com.blankj.utilcode.util.LogUtils
 import com.trello.rxlifecycle3.components.support.RxAppCompatActivity
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
-import org.mt.androidlibrary.EventBusUtil
+import org.mt.androidlibrary.other.utils.EventBusUtils
 import org.mt.androidlibrary.event.DefaultEvent
 import org.mt.androidlibrary.slide_back.SwipeBackActivityHelper
 import org.mt.androidlibrary.slide_back.SwipeBackLayout
@@ -41,7 +40,7 @@ abstract class CommonBaseActivity:RxAppCompatActivity() {
         setSwipeBackEnable(isSupportSwipeBack())
 
         initView(savedInstanceState)
-        EventBusUtil.regist(this)
+        EventBusUtils.regist(this)
         initData(savedInstanceState)
     }
 
@@ -128,7 +127,7 @@ abstract class CommonBaseActivity:RxAppCompatActivity() {
 
 
     override fun onDestroy() {
-        EventBusUtil.unRegist(this)
+        EventBusUtils.unRegist(this)
         super.onDestroy()
     }
 }

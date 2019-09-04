@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.blankj.utilcode.util.*
-import org.mt.androidlibrary.SystemActivityUtils
+import es.dmoral.toasty.Toasty
+import org.mt.androidlibrary.other.utils.SystemActivityUtils
 import org.mt.androidlibrary.app_update.AppUpdateUtils
 import org.mt.androidlibrary.base.ui.DataBindingBaseActivity
-import org.mt.androidlibrary.toast.custom_toast.Toasty
 
 @SuppressLint("SetTextI18n")
 class MainActivity : DataBindingBaseActivity<com.example.androidlibraryproject.databinding.ActivityMainBinding>() {

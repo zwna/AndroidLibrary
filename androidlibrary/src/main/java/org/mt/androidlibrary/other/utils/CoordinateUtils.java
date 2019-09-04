@@ -1,4 +1,4 @@
-package org.mt.androidlibrary;
+package org.mt.androidlibrary.other.utils;
 
 import static java.lang.Math.PI;
 /**

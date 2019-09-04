@@ -1,4 +1,4 @@
-package org.mt.androidlibrary
+package org.mt.androidlibrary.other.utils
 
 
 /**

@@ -27,7 +27,6 @@
             </intent-filter>
         </activity>
 
-        <service android:name="org.mt.androidlibrary.other.app_update_other.DownloadService"/>
     </application>
 
 </manifest>

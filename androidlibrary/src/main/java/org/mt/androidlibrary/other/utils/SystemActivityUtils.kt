@@ -1,4 +1,4 @@
-package org.mt.androidlibrary
+package org.mt.androidlibrary.other.utils
 
 import android.content.ComponentName
 import android.content.Context
@@ -8,6 +8,7 @@ import android.provider.Settings.ACTION_SETTINGS
 import com.blankj.utilcode.util.ActivityUtils
 import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.ToastUtils
+import org.mt.androidlibrary.CommonUtils
 
 
 /**
@@ -112,7 +113,7 @@ class SystemActivityUtils private constructor(){
          * @param qqNumber 目标QQ号码
          */
         fun openQQ(context: Context,qqNumber:String){
-          if(CommonUtils.checkAppInstalled(context,"com.tencent.mobileqq")){
+          if(CommonUtils.checkAppInstalled(context, "com.tencent.mobileqq")){
               val qqUrl = "mqqwpa://im/chat?chat_type=wpa&uin=$qqNumber&version=1"
               val intent = Intent(Intent.ACTION_VIEW, Uri.parse(qqUrl))
               ActivityUtils.startActivity(intent)
@@ -126,7 +127,7 @@ class SystemActivityUtils private constructor(){
          * @param qqNumber 目标QQ号码
          */
         fun openQQGroup(context: Context,qqNumber:String){
-            if(CommonUtils.checkAppInstalled(context,"com.tencent.mobileqq")){
+            if(CommonUtils.checkAppInstalled(context, "com.tencent.mobileqq")){
                 val qqUrl = "mqqwpa://im/chat?chat_type=group&uin=$qqNumber&version=1"
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(qqUrl))
                 ActivityUtils.startActivity(intent)
@@ -139,7 +140,7 @@ class SystemActivityUtils private constructor(){
          * 打开微信
          */
         fun openWX(context: Context){
-            if(CommonUtils.checkAppInstalled(context,"com.tencent.mm")){
+            if(CommonUtils.checkAppInstalled(context, "com.tencent.mm")){
                 val intent = Intent()
                 val cmp = ComponentName("com.tencent.mm","com.tencent.mm.ui.LauncherUI")
                 intent.action = Intent.ACTION_MAIN

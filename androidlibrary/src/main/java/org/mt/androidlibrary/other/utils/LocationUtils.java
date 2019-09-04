@@ -1,4 +1,4 @@
-package org.mt.androidlibrary;
+package org.mt.androidlibrary.other.utils;
 
 import android.content.Context;
 import android.content.Intent;

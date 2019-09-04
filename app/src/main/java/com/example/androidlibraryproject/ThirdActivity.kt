@@ -7,16 +7,16 @@ import com.blankj.utilcode.util.ActivityUtils
 import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.SpanUtils
 import com.blankj.utilcode.util.ToastUtils
+import es.dmoral.toasty.Toasty
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_third.*
 import org.mt.androidlibrary.AssetsManageUtils
-import org.mt.androidlibrary.MMKVUtils
+import org.mt.androidlibrary.other.utils.MMKVUtils
 import org.mt.androidlibrary.base.ui.DataBindingBaseActivity
 import org.mt.androidlibrary.net.RetrofitFactory
 import org.mt.androidlibrary.net.config.ApiConfig
 import org.mt.androidlibrary.rxjava.callback.RxJavaCallBack
-import org.mt.androidlibrary.toast.custom_toast.Toasty
 import java.util.concurrent.Executors
 
 class ThirdActivity : DataBindingBaseActivity<com.example.androidlibraryproject.databinding.ActivityThirdBinding>() {

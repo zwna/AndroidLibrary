@@ -60,8 +60,8 @@ dependencies {
     api 'com.android.support:design:29.0.0'
     api 'com.android.support:palette-v7:29.0.0'
     api 'com.tencent:mmkv:1.0.22'
-    api 'com.blankj:utilcodex:1.24.2'
-    api 'com.squareup.retrofit2:retrofit:2.6.0'
+    api 'com.blankj:utilcodex:1.25.7'
+    api 'com.squareup.retrofit2:retrofit:2.6.1'
     api 'io.reactivex.rxjava2:rxjava:2.2.9'
     api 'io.reactivex.rxjava2:rxandroid:2.1.1'
     api 'com.squareup.retrofit2:converter-gson:2.6.0'
@@ -71,9 +71,10 @@ dependencies {
     api 'com.trello.rxlifecycle3:rxlifecycle-android-lifecycle-kotlin:3.0.0'
     api 'com.trello.rxlifecycle3:rxlifecycle-components:3.0.0'
     api 'com.king.app:app-updater:1.0.4'
-    api 'com.github.AriesHoo.UIWidget:widget-core:3.2.15'
+    api 'com.github.AriesHoo.UIWidget:widget-core:3.2.21'
     api 'com.xgr.easypay:EasyPay:1.0.2'
     api 'org.greenrobot:eventbus:3.1.1'
+    api 'com.github.GrenderG:Toasty:1.4.2'
 }
 repositories {
     mavenCentral()
