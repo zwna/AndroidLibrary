@@ -57,5 +57,27 @@
             android:text="点击跳转到微信"
             android:onClick="jumpWX"/>
 
+    <TextView
+            android:id="@+id/text_allNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:id="@+id/text_allNumber1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:id="@+id/text_allChar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    <TextView
+            android:id="@+id/text_allChar1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+    />
+
 </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

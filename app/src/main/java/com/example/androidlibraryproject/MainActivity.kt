@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.blankj.utilcode.constant.PermissionConstants
 import com.blankj.utilcode.util.*
 import es.dmoral.toasty.Toasty
 import org.mt.androidlibrary.other.utils.SystemActivityUtils
@@ -69,9 +70,16 @@ class MainActivity : DataBindingBaseActivity<com.example.androidlibraryproject.d
     }
 
     fun startCall(view:View){
-        if(PermissionUtils.isGranted(android.Manifest.permission.CALL_PHONE)) {
-            SystemActivityUtils.startCallActivity("17660160209")
-        }
+        PermissionUtils.permission(PermissionConstants.PHONE).callback(object:PermissionUtils.SimpleCallback{
+            override fun onGranted() {
+                SystemActivityUtils.startCallActivity("17660160209")
+            }
+
+            override fun onDenied() {
+                Toasty.error(this@MainActivity,"没有拨打电话的权限").show()
+            }
+
+        }).request()
     }
 
     fun startDial(view:View){

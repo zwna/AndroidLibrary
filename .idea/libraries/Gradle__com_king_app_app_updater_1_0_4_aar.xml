@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.king.app:app-updater:1.0.4@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/bdf784b31c4176788c0fb265bd5b20de/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/bdf784b31c4176788c0fb265bd5b20de/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.king.app/app-updater/1.0.4/cc63d09fd27889a852d9c5ef2e8ce1e893c67f86/app-updater-1.0.4-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.king.app/app-updater/1.0.4/3d12cb80c8edc9706f1dd701cc5a55e94ef6de4/app-updater-1.0.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

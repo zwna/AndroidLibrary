@@ -18,7 +18,7 @@ android {
             config {
                 keyAlias 'alien'
                 keyPassword 'ay70um'
-                storeFile file('/Users/mac/Desktop/lb.jks')
+                storeFile file('../keystore/lb.jks')
                 storePassword 'ay70um'
             }
         }

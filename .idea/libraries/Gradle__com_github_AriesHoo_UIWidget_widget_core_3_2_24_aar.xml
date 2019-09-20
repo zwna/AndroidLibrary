@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.AriesHoo.UIWidget:widget-core:3.2.24@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9b0d72e35987384bf69175377bc3e345/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9b0d72e35987384bf69175377bc3e345/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.AriesHoo.UIWidget/widget-core/3.2.24/bd5fef44e6143ab2a10d5cb29a6843edf0f029c9/widget-core-3.2.24-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

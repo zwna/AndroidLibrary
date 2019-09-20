@@ -29,9 +29,14 @@ class StringExtensionUtils {
          * 判断字符串是否是全由英文字母组成
          * @return true:全是由英文字母组成 false:不是
          */
-        fun isAllChar(fstrData: String): Boolean {
-            val c = fstrData[0]
-            return c in 'a'..'z' || c in 'A'..'Z'
+        fun isAllEnglish(fstrData: String): Boolean {
+            val c = fstrData.toCharArray()
+            for( item in c){
+                if(!(item in 'a'..'z' || item in 'A'..'Z')){
+                    return false
+                }
+            }
+            return true
         }
 
 
