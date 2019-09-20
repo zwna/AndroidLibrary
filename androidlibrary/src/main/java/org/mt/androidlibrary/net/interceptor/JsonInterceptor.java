@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import okhttp3.*;
 import okio.Buffer;
 import okio.BufferedSource;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -20,7 +21,7 @@ public class JsonInterceptor implements Interceptor {
     private Charset UTF8 = Charset.forName("UTF-8");
 
 
-    public Response intercept(Chain chain) throws IOException{
+    public Response intercept(@NotNull Chain chain) throws IOException{
 
         Request request = chain.request();
         RequestBody requestBody = request.body();

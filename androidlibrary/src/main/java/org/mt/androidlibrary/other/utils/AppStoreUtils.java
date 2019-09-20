@@ -14,7 +14,7 @@ import com.blankj.utilcode.util.Utils;
 import java.util.List;
 
 /**
- * @Description:
+ * @Description:应用商店工具类
  * @Author:zwna
  * @Date:2019-09-20
  */

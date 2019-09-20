@@ -20,6 +20,7 @@ import java.io.FileOutputStream
 import java.io.IOException
 
 class SecondActivity : DataBindingBaseActivity<ActivitySecondBinding>() {
+
     override fun getLayoutId(): Int {
         return R.layout.activity_second
     }
@@ -56,7 +57,7 @@ class SecondActivity : DataBindingBaseActivity<ActivitySecondBinding>() {
 
 
     // 指纹图片存放路径
-     val sdCardDir = "${Environment.getExternalStorageDirectory()}/fingerprintimages/"
+    private val sdCardDir = "${Environment.getExternalStorageDirectory()}/fingerprintimages/"
 
     /**
      * 保存指纹图片

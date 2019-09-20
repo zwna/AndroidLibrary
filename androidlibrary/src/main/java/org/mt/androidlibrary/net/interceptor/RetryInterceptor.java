@@ -3,6 +3,7 @@ package org.mt.androidlibrary.net.interceptor;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 
@@ -22,7 +23,7 @@ public class RetryInterceptor implements Interceptor {
     }
 
     @Override
-    public Response intercept(Chain chain) throws IOException {
+    public Response intercept(@NotNull Chain chain) throws IOException {
         Request request = chain.request();
         System.out.println("retryNum=" + retryNum);
         Response response = chain.proceed(request);
