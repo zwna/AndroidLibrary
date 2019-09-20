@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Stack;
 
@@ -35,37 +36,37 @@ public class SlideFinishManager implements Application.ActivityLifecycleCallback
     }
 
     @Override
-    public void onActivityCreated(Activity activity, Bundle bundle) {
+    public void onActivityCreated(@NotNull Activity activity, Bundle bundle) {
         mActivityStack.add(activity);
     }
 
     @Override
-    public void onActivityStarted(Activity activity) {
+    public void onActivityStarted(@NotNull Activity activity) {
 
     }
 
     @Override
-    public void onActivityResumed(Activity activity) {
+    public void onActivityResumed(@NotNull Activity activity) {
 
     }
 
     @Override
-    public void onActivityPaused(Activity activity) {
+    public void onActivityPaused(@NotNull Activity activity) {
 
     }
 
     @Override
-    public void onActivityStopped(Activity activity) {
+    public void onActivityStopped(@NotNull Activity activity) {
 
     }
 
     @Override
-    public void onActivitySaveInstanceState(Activity activity, Bundle bundle) {
+    public void onActivitySaveInstanceState(@NotNull Activity activity, @NotNull Bundle bundle) {
 
     }
 
     @Override
-    public void onActivityDestroyed(Activity activity) {
+    public void onActivityDestroyed(@NotNull Activity activity) {
         mActivityStack.remove(activity);
     }
 

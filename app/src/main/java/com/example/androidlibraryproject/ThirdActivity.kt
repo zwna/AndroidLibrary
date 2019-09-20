@@ -11,8 +11,6 @@ import es.dmoral.toasty.Toasty
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_third.*
-import org.mt.androidlibrary.AssetsManageUtils
-import org.mt.androidlibrary.other.utils.MMKVUtils
 import org.mt.androidlibrary.base.ui.DataBindingBaseActivity
 import org.mt.androidlibrary.net.RetrofitFactory
 import org.mt.androidlibrary.net.config.ApiConfig
